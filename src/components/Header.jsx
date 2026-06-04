@@ -2,7 +2,7 @@
 
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
-// import "./Header.css";
+import "./Header.css";
 
 function Header() {
   const location = useLocation();

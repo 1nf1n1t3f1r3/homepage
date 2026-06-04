@@ -1,0 +1,91 @@
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+.modal-content {
+  background: #1e1e24; /* Match your theme dark/light background */
+  color: #f5f5f5;
+  width: 100%;
+  max-width: 800px;
+  max-height: 85vh;
+  border-radius: 8px;
+  overflow-y: auto;
+  padding: 30px;
+  position: relative;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.modal-close-btn {
+  position: sticky;
+  top: 0;
+  float: right;
+  background: #ff5555;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  z-index: 10;
+}
+
+.modal-hero-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+  margin: 15px 0 25px 0;
+  border: 1px solid #333;
+}
+
+.modal-status {
+  text-align: center;
+  padding: 40px;
+  font-size: 1.1rem;
+}
+
+/* GitHub style Markdown presentation overrides */
+.markdown-body h1,
+.markdown-body h2 {
+  border-bottom: 1px solid #333;
+  padding-bottom: 8px;
+  margin-top: 24px;
+}
+
+.markdown-body code {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: monospace;
+}
+
+/* Ensure any images inside the markdown wrap nicely */
+.markdown-body img {
+  max-width: 100%;
+  height: auto !important; /* Overrides the fixed HTML height property */
+  display: block;
+  margin: 15px auto;
+  border-radius: 6px;
+  border: 1px solid #333;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Optional: Style the text right underneath your screenshots */
+.markdown-body img + p,
+.markdown-body p:has(img) + p {
+  font-style: italic;
+  color: #aaa;
+  text-align: center;
+  font-size: 0.9rem;
+  margin-top: -5px;
+  margin-bottom: 20px;
+}
