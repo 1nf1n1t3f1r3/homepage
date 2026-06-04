@@ -31,14 +31,12 @@ function Header() {
         <Link to="/unity" className={isActive("/unity")}>
           Unity Dev
         </Link>
-        <a
-          href="https://dnd.janusdevries.nl"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="nav-link external"
-        >
-          D&D Labs ↗
-        </a>
+        <Link to="/dnd" className={isActive("/unity")}>
+          D&D
+        </Link>
+        <Link to="/masquedefer" className={isActive("/unity")}>
+          Masque de Fer
+        </Link>
       </nav>
     </header>
   );

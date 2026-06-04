@@ -8,7 +8,13 @@ const odinProjects = [
   {
     title: "Odinbook",
     subtitle: "Full-Stack Social Media Platform",
-    techStack: ["Ruby on Rails", "PostgreSQL", "Tailwind CSS", "Pagy"],
+    techStack: [
+      "Ruby on Rails",
+      "PostgreSQL",
+      "Tailwind CSS",
+      "Pagy",
+      "Sendgrid",
+    ],
     description:
       "A comprehensive clone of Facebook built as a capstone project for The Odin Project. Features user profiles, following, posts, likes and comments. Feel free to post something; I get pretty lonely in Odinbook-land.",
     liveUrl: "https://odinbook.janusdevries.nl",
