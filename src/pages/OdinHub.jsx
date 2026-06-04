@@ -1,0 +1,99 @@
+// src/pages/Odinhub.jsx
+
+import React from "react";
+import "./OdinHub.css";
+
+const odinProjects = [
+  {
+    title: "Odinbook",
+    subtitle: "Full-Stack Social Media Platform",
+    techStack: ["Ruby on Rails", "PostgreSQL", "Tailwind CSS", "Pagy"],
+    description:
+      "A comprehensive clone of Facebook built as a capstone project for The Odin Project. Features user profiles, following, posts, likes and comments. Feel free to post something; I get pretty lonely in Odinbook-land.",
+    liveUrl: "https://odinbook.janusdevries.nl",
+    githubUrl: "https://github.com/1nf1n1t3f1r3/odinbook",
+    isFreeTier: true,
+  },
+  {
+    title: "Pokémon Memory Game",
+    subtitle: "Dynamic State-Management Trainer",
+    techStack: ["React", "PokeAPI"],
+    description:
+      "An interactive memory card game pulling live data from the PokeAPI. Features procedural generation based on custom ID entries or complete regional Pokedex selections from all generations, even though my own familiarity with them becomes very limited after #493: Arceus.",
+    liveUrl: "https://pokemon.janusdevries.nl",
+    githubUrl: "https://github.com/1nf1n1t3f1r3/odin_memory",
+    isFreeTier: false,
+  },
+  {
+    title: "Where's Waldo",
+    subtitle: "Real-Time Photo Tagging Game",
+    techStack: ["React", "Ruby on Rails", "PostgreSQL"],
+    description:
+      "A time-attack puzzle game where players find the titular Waldo (and friends) a massive canvas. Quick detectives can enter their names on the high-score leaderboard. Coordinates are validated via the backend to prevent cheating. I hope nobody realizes they can just find the characters, press F5 to reload the page, and then quickly click them all to beat my top score. That'd be devastating.",
+    liveUrl: "https://whereswaldo.janusdevries.nl",
+    githubUrl: "https://github.com/1nf1n1t3f1r3/odin_wheres_waldo",
+    isFreeTier: true,
+  },
+];
+
+function OdinHub() {
+  return (
+    <main className="odin-hub-container">
+      <header className="page-header">
+        <h2>The Odin Project Showcase</h2>
+        <p className="page-intro">
+          My favourite projects from The Odin Project curriculum.
+        </p>
+      </header>
+
+      <div className="projects-grid">
+        {odinProjects.map((project, index) => (
+          <article key={project.title} className="project-card">
+            <div className="card-header">
+              <h3>{project.title}</h3>
+              <span className="project-subtitle">{project.subtitle}</span>
+            </div>
+
+            <div className="tech-badge-container">
+              {project.techStack.map((tech) => (
+                <span key={tech} className="tech-badge">
+                  {tech}
+                </span>
+              ))}
+            </div>
+
+            <p className="project-description">{project.description}</p>
+
+            {project.isFreeTier && (
+              <div className="free-tier-warning">
+                ☕ Hosted on a free tier. Please allow a minute for the server
+                to wake up on your first click!
+              </div>
+            )}
+
+            <div className="card-actions">
+              <a
+                href={project.liveUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn-primary"
+              >
+                Launch App ↗
+              </a>
+              <a
+                href={project.githubUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn-secondary"
+              >
+                View Code
+              </a>
+            </div>
+          </article>
+        ))}
+      </div>
+    </main>
+  );
+}
+
+export default OdinHub;

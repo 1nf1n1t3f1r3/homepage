@@ -1,10 +1,51 @@
-import { useState } from "react";
-import "./App.css";
+// src/App.jsx
+
+import React from "react";
+import { Routes, Route } from "react-router-dom";
+import Header from "./components/Header";
+import OdinHub from "./pages/OdinHub";
+
+// Tiny placeholder components for your pages (you can move these to separate files later!)
+const Home = () => (
+  <main className="page-content">
+    <h2>Resume & About Me</h2>
+    <p>Welcome to my portfolio...</p>
+  </main>
+);
+// const OdinHubLink = () => (
+//   <main className="page-content">
+//     <h2>Odin Projects</h2>
+//     <p>Check out my apps running on their own subdomains...</p>
+//   </main>
+// );
+const Trading = () => (
+  <main className="page-content">
+    <h2>Trading Scripts</h2>
+    <p>Pine Script and automation write-ups...</p>
+  </main>
+);
+const UnityDev = () => (
+  <main className="page-content">
+    <h2>Unity & The Networking Wheel</h2>
+    <p>The story of how I tried to rewrite multiplayer sync from scratch...</p>
+  </main>
+);
 
 function App() {
-  const [count, setCount] = useState(0);
+  return (
+    <div className="app-container">
+      {/* The header stays visible on every single page */}
+      <Header />
 
-  return <div></div>;
+      {/* React Router decides which component to render based on the URL */}
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/odin" element={<OdinHub />} />
+        <Route path="/trading" element={<Trading />} />
+        <Route path="/unity" element={<UnityDev />} />
+      </Routes>
+    </div>
+  );
 }
 
 export default App;
