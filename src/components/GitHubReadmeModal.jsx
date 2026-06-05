@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import Markdown from "react-markdown";
 import rehypeRaw from "rehype-raw";
-import "./ReadmeModal.css";
+import "./GitHubReadmeModal.css";
 
 function ReadmeModal({ repo, isOpen, onClose, projectImage }) {
   const [markdown, setMarkdown] = useState("");

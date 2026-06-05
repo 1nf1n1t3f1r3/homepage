@@ -30,6 +30,18 @@ const UnityDev = () => (
     <p>The story of how I tried to rewrite multiplayer sync from scratch...</p>
   </main>
 );
+const DnD = () => (
+  <main className="page-content">
+    <h2>D&D Worldbuilding Tools</h2>
+    <p>I'm a bit tired of having to come up with loot every dungeon</p>
+  </main>
+);
+const MasqueDeFer = () => (
+  <main className="page-content">
+    <h2>Masque de Fer Club Website</h2>
+    <p>The (Dutch) Website of Schermvereniging Masque de Fer, Zwijndrecht</p>
+  </main>
+);
 
 function App() {
   return (
@@ -43,6 +55,8 @@ function App() {
         <Route path="/odin" element={<OdinHub />} />
         <Route path="/trading" element={<Trading />} />
         <Route path="/unity" element={<UnityDev />} />
+        <Route path="/dnd" element={<DnD />} />
+        <Route path="/masquedefer" element={<MasqueDeFer />} />
       </Routes>
     </div>
   );

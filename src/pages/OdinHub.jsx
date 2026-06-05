@@ -1,8 +1,8 @@
 // src/pages/Odinhub.jsx
 
 import React, { useState } from "react";
-import ReadmeModal from "../components/ReadmeModal";
-import "./OdinHub.css";
+import ReadmeModal from "../components/GitHubReadmeModal";
+import styles from "./OdinHub.module.css";
 
 const odinProjects = [
   {
@@ -54,45 +54,45 @@ function OdinHub() {
   const [activeProject, setActiveProject] = useState(null);
 
   return (
-    <main className="odin-hub-container">
-      <header className="page-header">
+    <main className={styles.odinHubContainer}>
+      <header className={styles.pageHeader}>
         <h2>The Odin Project Showcase</h2>
-        <p className="page-intro">
+        <p className={styles.pageIntro}>
           My favourite projects from The Odin Project curriculum.
         </p>
       </header>
 
-      <div className="projects-grid">
+      <div className={styles.projectsGrid}>
         {odinProjects.map((project) => (
-          <article key={project.title} className="project-card">
-            <div className="card-header">
+          <article key={project.title} className={styles.projectCard}>
+            <div className={styles.cardHeader}>
               <h3>{project.title}</h3>
-              <span className="project-subtitle">{project.subtitle}</span>
+              <span className={styles.projectSubtitle}>{project.subtitle}</span>
             </div>
 
-            <div className="tech-badge-container">
+            <div className={styles.techBadgeContainer}>
               {project.techStack.map((tech) => (
-                <span key={tech} className="tech-badge">
+                <span key={tech} className={styles.techBadge}>
                   {tech}
                 </span>
               ))}
             </div>
 
-            <p className="project-description">{project.description}</p>
+            <p className={styles.projectDescription}>{project.description}</p>
 
             {project.isFreeTier && (
-              <div className="free-tier-warning">
+              <div className={styles.freeTierWarning}>
                 ☕ Hosted on a free tier. Please allow a minute for the server
                 to wake up on your first click!
               </div>
             )}
 
-            <div className="card-actions">
+            <div className={styles.cardActions}>
               <a
                 href={project.liveUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn btn-primary"
+                className={`${styles.btn} ${styles.btnPrimary}`}
               >
                 Launch App ↗
               </a>
@@ -100,14 +100,14 @@ function OdinHub() {
                 href={project.githubUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn btn-secondary"
+                className={`${styles.btn} ${styles.btnSecondary}`}
               >
                 Github Repo
               </a>
               {/* NEW: Button to trigger the in-app Readme menu */}
               <button
                 onClick={() => setActiveProject(project)}
-                className="btn btn-secondary"
+                className={`${styles.btn} ${styles.btnSecondary}`}
               >
                 Github Readme
               </button>
@@ -115,6 +115,7 @@ function OdinHub() {
           </article>
         ))}
       </div>
+
       {/* The Modal Handler */}
       <ReadmeModal
         key={activeProject?.repo || "empty"}

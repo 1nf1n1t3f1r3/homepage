@@ -31,10 +31,10 @@ function Header() {
         <Link to="/unity" className={isActive("/unity")}>
           Unity Dev
         </Link>
-        <Link to="/dnd" className={isActive("/unity")}>
+        <Link to="/dnd" className={isActive("/dnd")}>
           D&D
         </Link>
-        <Link to="/masquedefer" className={isActive("/unity")}>
+        <Link to="/masquedefer" className={isActive("/masquedefer")}>
           Masque de Fer
         </Link>
       </nav>
