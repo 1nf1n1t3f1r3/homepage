@@ -1,25 +1,35 @@
-// src/pages/MasqueDeFer.jsx
+// src/pages/MyWebsites.jsx
 
 import React, { useState } from "react";
 import ReadmeModal from "../components/GitHubReadmeModal";
 
-import styles from "./MasqueDeFer.module.css"; // Bring back the module layout helper
+import styles from "./MyWebsites.module.css"; // Bring back the module layout helper
 
-const odinProjects = [
+const websiteProjects = [
   {
     title: "Masque de Fer Fencing Club Website",
     subtitle: "Plain HTML Website",
     techStack: ["HTML", "CSS", "Javascript"],
     description:
-      "A basic HTML+CSS+JS Website for my Fencing Club in Zwijndrecht. I deliberately kept it as simple as possible to allow non-devs to peak under the hood, or write for it. It does show how much work frameworks take off our hands; working with plain HTML doesn't necessarily make it easier. It might be a candidate for a snappy React refactor some day.",
+      "A basic HTML+CSS+JS Website for my Fencing Club in Zwijndrecht. I deliberately kept it as simple as possible to allow non-devs to peak under the hood, or write for it. It does show how much work frameworks take off our hands; working with plain HTML doesn't necessarily make it easier. Good thing we can still write Partials in JS. It might be a candidate for a snappy React refactor some day.",
     liveUrl: "https://masquedefer.nl",
     githubUrl: "https://github.com/1nf1n1t3f1r3/masque_de_fer",
     repo: "1nf1n1t3f1r3/masque_de_fer",
     image: "/images/masque_de_fer-preview.png",
   },
+  {
+    title: "TTRPG Tools",
+    subtitle: "Work in Progress",
+    techStack: [""],
+    description: "",
+    liveUrl: "",
+    githubUrl: "",
+    repo: "",
+    image: "",
+  },
 ];
 
-function MasqueDeFer() {
+function MyWebsites() {
   // Track which project is actively being viewed in the modal
   const [activeProject, setActiveProject] = useState(null);
 
@@ -30,12 +40,13 @@ function MasqueDeFer() {
         <div className={`pageHeaderBanner ${styles.odinHeaderTheme}`}>
           <div>
             <h2>Website Showcase</h2>
-            <p>The website of my fencing club in Zwijndrecht.</p>
+            <p>Websites I've built and am pretty pleased with.</p>
+            <p>All of these can be found live.</p>
           </div>
         </div>
 
         <div className="projectsGrid">
-          {odinProjects.map((project) => (
+          {websiteProjects.map((project) => (
             <article
               key={project.title}
               className={`projectCard ${styles.mdfCardTheme}`}
@@ -75,9 +86,9 @@ function MasqueDeFer() {
                   href={project.githubUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="btn btnSecondary"
+                  className="btn btnPrimary"
                 >
-                  Github Repo
+                  Github Repo ↗
                 </a>
                 <button
                   onClick={() => setActiveProject(project)}
@@ -102,4 +113,4 @@ function MasqueDeFer() {
   );
 }
 
-export default MasqueDeFer;
+export default MyWebsites;

@@ -21,22 +21,21 @@ function Header() {
         <Link to="/" className={isActive("/")}>
           Home & Resume
         </Link>
+        <Link to="/mywebsites" className={isActive("/mywebsites")}>
+          My Websites
+        </Link>
         <Link to="/odin" className={isActive("/odin")}>
           Odin Projects
         </Link>
-
         <Link to="/trading" className={isActive("/trading")}>
           Trading
         </Link>
         <Link to="/unity" className={isActive("/unity")}>
           Unity Dev
         </Link>
-        <Link to="/dnd" className={isActive("/dnd")}>
+        {/* <Link to="/dnd" className={isActive("/dnd")}>
           D&D
-        </Link>
-        <Link to="/masquedefer" className={isActive("/masquedefer")}>
-          Masque de Fer
-        </Link>
+        </Link> */}
       </nav>
     </header>
   );

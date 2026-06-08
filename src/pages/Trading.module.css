@@ -1,0 +1,27 @@
+/* src/pages/MyWebsites.module.css */
+
+.fullBleedCanvas {
+  width: 100%;
+  position: relative;
+
+  /* 1. The custom tinted backdrop filter unique to this page */
+  background:
+    linear-gradient(
+      transparent 0%,
+      rgba(11, 13, 16, 0.4) 00%,
+      var(--bg-app) 90%
+    ),
+    url("/images/trading_AMCR.png") no-repeat;
+
+  background-size: cover;
+  background-position: center;
+
+  /* 2. Pushes the footer cleanly to the bottom of the screen */
+  min-height: calc(100vh - 160px);
+}
+
+.mdfCardTheme {
+  --card-bg-override: var(--card-mdf);
+  --card-hover-override: var(--card-mdf-hover);
+  --card-border-override: var(--card-mdf-border);
+}

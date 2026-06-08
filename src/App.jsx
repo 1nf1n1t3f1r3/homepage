@@ -4,7 +4,8 @@ import React from "react";
 import { Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
 import OdinHub from "./pages/OdinHub";
-import MasqueDeFer from "./pages/MasqueDeFer";
+import Trading from "./pages/Trading";
+import MyWebsites from "./pages/MyWebsites";
 
 // Tiny placeholder components for your pages (you can move these to separate files later!)
 const Home = () => (
@@ -19,12 +20,12 @@ const Home = () => (
 //     <p>Check out my apps running on their own subdomains...</p>
 //   </main>
 // );
-const Trading = () => (
-  <main className="page-content">
-    <h2>Trading Scripts</h2>
-    <p>Pine Script and automation write-ups...</p>
-  </main>
-);
+// const Trading = () => (
+//   <main className="page-content">
+//     <h2>Trading Scripts</h2>
+//     <p>Pine Script and automation write-ups...</p>
+//   </main>
+// );
 const UnityDev = () => (
   <main className="page-content">
     <h2>Unity & The Networking Wheel</h2>
@@ -56,8 +57,7 @@ function App() {
         <Route path="/odin" element={<OdinHub />} />
         <Route path="/trading" element={<Trading />} />
         <Route path="/unity" element={<UnityDev />} />
-        <Route path="/dnd" element={<DnD />} />
-        <Route path="/masquedefer" element={<MasqueDeFer />} />
+        <Route path="/mywebsites" element={<MyWebsites />} />
       </Routes>
     </div>
   );

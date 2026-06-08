@@ -111,9 +111,9 @@ function OdinHub() {
                   href={project.githubUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="btn btnSecondary"
+                  className="btn btnPrimary"
                 >
-                  Github Repo
+                  Github Repo ↗
                 </a>
                 <button
                   onClick={() => setActiveProject(project)}
