@@ -4,6 +4,7 @@ import React from "react";
 import { Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
 import OdinHub from "./pages/OdinHub";
+import MasqueDeFer from "./pages/MasqueDeFer";
 
 // Tiny placeholder components for your pages (you can move these to separate files later!)
 const Home = () => (
@@ -36,12 +37,12 @@ const DnD = () => (
     <p>I'm a bit tired of having to come up with loot every dungeon</p>
   </main>
 );
-const MasqueDeFer = () => (
-  <main className="page-content">
-    <h2>Masque de Fer Club Website</h2>
-    <p>The (Dutch) Website of Schermvereniging Masque de Fer, Zwijndrecht</p>
-  </main>
-);
+// const MasqueDeFer = () => (
+//   <main className="page-content">
+//     <h2>Masque de Fer Club Website</h2>
+//     <p>The (Dutch) Website of Schermvereniging Masque de Fer, Zwijndrecht</p>
+//   </main>
+// );
 
 function App() {
   return (

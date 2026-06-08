@@ -12,8 +12,18 @@
 :root {
   /* Dark Canvas Colors */
   --bg-app: #25252a; /* Total background canvas */
-  --bg-surface: #101828; /* Card backgrounds */
-  --bg-surface-hover: #1c2029; /* Card hover background */
+  --bg-card: #101828; /* Default Card backgrounds */
+  --bg-card-hover: #1c2029; /* Default Card Hover */
+
+  /* Odin */
+  --card-odin: #101828;
+  --card-odin-hover: #1c2029;
+  --card-odin-border: #101828;
+
+  /* MDF */
+  --card-mdf: #102287;
+  --card-mdf-hover: #1c2029;
+  --card-mdf-border: #f9df19;
 
   /* Text Scales */
   --text-main: #f3f4f6; /* Bright text for headings */
@@ -155,8 +165,9 @@ svg {
    4. CARD COMPONENTS
    ========================================================================== */
 .projectCard {
-  background: var(--bg-surface);
-  border: 1px solid var(--border-white);
+  background: var(--card-bg-override, var(--bg-card));
+  border: 1px solid var(--card-border-override, var(--border-white));
+  max-width: 400px;
   border-radius: 12px;
   padding: 25px;
   display: flex;
@@ -169,7 +180,7 @@ svg {
 }
 
 .projectCard:hover {
-  background: var(--bg-surface-hover);
+  background: var(--card-hover-override, var(--bg-card-hover));
   transform: translateY(-4px);
   box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3);
 }
@@ -260,30 +271,4 @@ svg {
 
 .btnSecondary:hover {
   background: var(--button-muted);
-}
-
-/* ==========================================================================
-   6. CUSTOM THEME BACKDROPS
-   ========================================================================== */
-
-.odinHubContainer {
-  position: relative;
-  width: 100%;
-
-  /* Layer 1: A dark gradient overlay that fades to solid dark at the bottom */
-  /* Layer 2: The asset image, positioned beautifully at the top right */
-  background:
-    linear-gradient(
-      rgba(11, 13, 16, 0.85) 0%,
-      /* Tints the image to match --bg-app */ rgba(11, 13, 16, 0.98) 60%,
-      /* Darkens it as it goes down */ var(--bg-app) 100%
-        /* Smoothly blends into solid background */
-    ),
-    url("/images/odin_project.svg") no-repeat; /* Ensure path matches your public directory */
-
-  background-size: cover; /* Ensures it scales cleanly */
-  background-position: top right; /* Keeps the focal elements visible */
-
-  /* Optional: Ensures the container takes up full screen space to show the backdrop */
-  min-height: calc(100vh - 80px);
 }

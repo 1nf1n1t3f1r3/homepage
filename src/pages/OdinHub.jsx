@@ -72,7 +72,10 @@ function OdinHub() {
 
         <div className="projectsGrid">
           {odinProjects.map((project) => (
-            <article key={project.title} className="projectCard">
+            <article
+              key={project.title}
+              className={`projectCard ${styles.odinCardTheme}`}
+            >
               <div className="cardHeader">
                 <h3>{project.title}</h3>
                 <span className="projectSubtitle">{project.subtitle}</span>
