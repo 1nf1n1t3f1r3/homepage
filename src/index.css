@@ -1,41 +1,64 @@
+@font-face {
+  font-family: "Norsebold";
+  src: url("./assets/fonts/Norsebold.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap; /* Tells the browser to show text immediately using a fallback font while downloading Norsebold */
+}
+
 /* ==========================================================================
-   1. GLOBAL BOX-SIZING & SPACING RESET
+   1. THE DESIGN VAULT (Variables)
+   ========================================================================== */
+:root {
+  /* Dark Canvas Colors */
+  --bg-app: #25252a; /* Total background canvas */
+  --bg-surface: #101828; /* Card backgrounds */
+  --bg-surface-hover: #1c2029; /* Card hover background */
+
+  /* Text Scales */
+  --text-main: #f3f4f6; /* Bright text for headings */
+  --text-muted: #9ca3af; /* Soft gray for descriptions */
+
+  /* Layout Lines */
+  --border-subtle: #222731; /* Borders separating elements */
+  --border-white: #6d737e; /* Borders separating elements */
+
+  --button-muted: #3c414c;
+
+  /* Accent Placeholders - Keep these to play around with different vibes! */
+  --accent-odin: #3b82f6; /* Blue */
+  --accent-trading: #10b981; /* Emerald Green */
+  --accent-unity: #ec4899; /* Pink/Purple */
+}
+
+/* ==========================================================================
+   2. MODERN LAYOUT RESET
    ========================================================================== */
 *,
 *::before,
 *::after {
-  box-sizing: border-box; /* Padding & borders no longer expand elements */
+  box-sizing: border-box; /* Padding & borders no longer expand element widths */
   margin: 0;
   padding: 0;
 }
 
-/* ==========================================================================
-   2. BODY & TEXT DEFAULTS
-   ========================================================================== */
 body {
   min-height: 100vh;
+  background-color: var(--bg-app);
+  color: var(--text-main);
   text-rendering: optimizeSpeed;
   line-height: 1.5;
-  -webkit-font-smoothing: antialiased; /* Smoother text rendering on Mac */
-
-  /* Set your global font here so everything inherits it naturally */
+  -webkit-font-smoothing: antialiased; /* Crisper text rendering on Apple displays */
   font-family:
     system-ui,
     -apple-system,
     BlinkMacSystemFont,
     "Segoe UI",
     Roboto,
-    Oxygen,
-    Ubuntu,
-    Cantarell,
     sans-serif;
 }
 
-/* ==========================================================================
-   3. INTERACTIVE ELEMENTS (THE CULPRITS)
-   ========================================================================== */
-
-/* Force form controls to use the body's font family, size, and color */
+/* Force form elements to naturally inherit typography choices */
 input,
 button,
 textarea,
@@ -46,21 +69,16 @@ select {
   border: none;
 }
 
-/* Make buttons act like clickable objects instead of flat system blocks */
 button {
   cursor: pointer;
 }
 
-/* Remove default link underlining unless hovered (optional, but standard for portfolios) */
+/* Global clean links */
 a {
   text-decoration: none;
-  color: inherit; /* Prevents the classic ugly blue hyperlink color */
+  color: inherit;
 }
 
-/* ==========================================================================
-   4. MEDIA RESET
-   ========================================================================== */
-/* Prevents massive images from overflowing their container boxes */
 img,
 picture,
 svg {
@@ -68,114 +86,204 @@ svg {
   display: block;
 }
 
-/* :root {
-  --text: #6b6375;
-  --text-h: #08060d;
-  --bg: #fff;
-  --border: #e5e4e7;
-  --code-bg: #f4f3ec;
-  --accent: #aa3bff;
-  --accent-bg: rgba(170, 59, 255, 0.1);
-  --accent-border: rgba(170, 59, 255, 0.5);
-  --social-bg: rgba(244, 243, 236, 0.5);
-  --shadow:
-    rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
+/* ==========================================================================
+   3. UNIFIED FRAMEWORK (Shared Page Components)
+   ========================================================================== */
 
-  --sans: system-ui, "Segoe UI", Roboto, sans-serif;
-  --heading: system-ui, "Segoe UI", Roboto, sans-serif;
-  --mono: ui-monospace, Consolas, monospace;
-
-  font: 18px/145% var(--sans);
-  letter-spacing: 0.18px;
-  color-scheme: light dark;
-  color: var(--text);
-  background: var(--bg);
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-
-  @media (max-width: 1024px) {
-    font-size: 16px;
-  }
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --text: #9ca3af;
-    --text-h: #f3f4f6;
-    --bg: #16171d;
-    --border: #2e303a;
-    --code-bg: #1f2028;
-    --accent: #c084fc;
-    --accent-bg: rgba(192, 132, 252, 0.15);
-    --accent-border: rgba(192, 132, 252, 0.5);
-    --social-bg: rgba(47, 48, 58, 0.5);
-    --shadow:
-      rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
-  }
-
-  #social .button-icon {
-    filter: invert(1) brightness(2);
-  }
-}
-
-body {
-  margin: 0;
-}
-
-#root {
-  width: 1126px;
-  max-width: 100%;
+/* Page Outer Structure */
+.pageContainer {
+  max-width: 1200px;
   margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.pageHeaderBanner {
+  margin-bottom: 40px;
+  padding: 35px 40px;
+  border-radius: 12px;
+
+  /* Layout: Center the block horizontally within the 1200px container */
+  margin-left: auto;
+  margin-right: auto;
+  width: max-content;
+  max-width: 100%;
+
+  /* Background Colour & Borders */
+  background: linear-gradient(
+    rgba(11, 13, 16, 0.6) 0%,
+    rgba(11, 13, 16, 0.6) 0%
+  );
+  border: 1px solid var(--border-white);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+
+  /* Text */
   text-align: center;
-  border-inline: 1px solid var(--border);
-  min-height: 100svh;
+  background-size: cover;
+  background-position: left;
+}
+
+/* Base typography sizing (independent of specific font families or custom colors) */
+.pageHeaderBanner h2 {
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.pageHeaderBanner p {
+  font-size: 1.1rem;
+  max-width: 800px;
+}
+
+.pageHeaderBanner img {
+  display: inline-flex;
+}
+
+.pageIntro {
+  color: var(--text-muted);
+  font-size: 1.1rem;
+  max-width: 800px;
+}
+
+/* The Responsive Grid Engine */
+.projectsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 30px;
+}
+
+/* ==========================================================================
+   4. CARD COMPONENTS
+   ========================================================================== */
+.projectCard {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-white);
+  border-radius: 12px;
+  padding: 25px;
   display: flex;
   flex-direction: column;
-  box-sizing: border-box;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+  transition:
+    transform 0.2s,
+    background-color 0.2s,
+    box-shadow 0.2s;
 }
 
-h1,
-h2 {
-  font-family: var(--heading);
+.projectCard:hover {
+  background: var(--bg-surface-hover);
+  transform: translateY(-4px);
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3);
+}
+
+.cardHeader h3 {
+  font-size: 1.5rem;
+  margin: 0 0 5px 0;
+}
+
+.projectSubtitle {
+  font-size: 0.9rem;
+  color: var(--accent-odin); /* Hooked up to the sandbox theme variables */
+  font-weight: 600;
+  display: block;
+  margin-bottom: 15px;
+}
+
+/* Technology Tags */
+.techBadgeContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 15px;
+}
+
+.techBadge {
+  background: var(--border-subtle);
+  color: var(--text-main);
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 0.8rem;
   font-weight: 500;
-  color: var(--text-h);
 }
 
-h1 {
-  font-size: 56px;
-  letter-spacing: -1.68px;
-  margin: 32px 0;
-  @media (max-width: 1024px) {
-    font-size: 36px;
-    margin: 20px 0;
-  }
-}
-h2 {
-  font-size: 24px;
-  line-height: 118%;
-  letter-spacing: -0.24px;
-  margin: 0 0 8px;
-  @media (max-width: 1024px) {
-    font-size: 20px;
-  }
-}
-p {
-  margin: 0;
+.projectDescription {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin: 0 0 20px 0;
+  flex-grow: 1; /* Automatically keeps card boundaries uniform */
 }
 
-code,
-.counter {
-  font-family: var(--mono);
-  display: inline-flex;
-  border-radius: 4px;
-  color: var(--text-h);
+.freeTierWarning {
+  background: #2c2514; /* Warm dark mode notification palette */
+  border: 1px solid #66541e;
+  color: #ffe066;
+  padding: 10px;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  margin-bottom: 20px;
+  line-height: 1.4;
 }
 
-code {
-  font-size: 15px;
-  line-height: 135%;
-  padding: 4px 8px;
-  background: var(--code-bg);
-} */
+/* ==========================================================================
+   5. INTERACTIVE COMPONENT BUTTONS
+   ========================================================================== */
+.cardActions {
+  display: flex;
+  gap: 12px;
+}
+
+.btn {
+  padding: 10px 16px;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-align: center;
+  flex: 1;
+  transition:
+    background-color 0.2s,
+    color 0.2s;
+}
+
+.btnPrimary {
+  background: var(--text-main); /* High contrast action button */
+  color: var(--bg-app);
+}
+
+.btnPrimary:hover {
+  background: var(--text-muted);
+}
+
+.btnSecondary {
+  background: transparent;
+  color: var(--text-main);
+  border: 1px solid var(--border-white);
+}
+
+.btnSecondary:hover {
+  background: var(--button-muted);
+}
+
+/* ==========================================================================
+   6. CUSTOM THEME BACKDROPS
+   ========================================================================== */
+
+.odinHubContainer {
+  position: relative;
+  width: 100%;
+
+  /* Layer 1: A dark gradient overlay that fades to solid dark at the bottom */
+  /* Layer 2: The asset image, positioned beautifully at the top right */
+  background:
+    linear-gradient(
+      rgba(11, 13, 16, 0.85) 0%,
+      /* Tints the image to match --bg-app */ rgba(11, 13, 16, 0.98) 60%,
+      /* Darkens it as it goes down */ var(--bg-app) 100%
+        /* Smoothly blends into solid background */
+    ),
+    url("/images/odin_project.svg") no-repeat; /* Ensure path matches your public directory */
+
+  background-size: cover; /* Ensures it scales cleanly */
+  background-position: top right; /* Keeps the focal elements visible */
+
+  /* Optional: Ensures the container takes up full screen space to show the backdrop */
+  min-height: calc(100vh - 80px);
+}

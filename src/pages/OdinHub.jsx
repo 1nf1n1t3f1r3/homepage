@@ -1,8 +1,9 @@
-// src/pages/Odinhub.jsx
+// src/pages/OdinHub.jsx
 
 import React, { useState } from "react";
 import ReadmeModal from "../components/GitHubReadmeModal";
-import styles from "./OdinHub.module.css";
+
+import styles from "./OdinHub.module.css"; // Bring back the module layout helper
 
 const odinProjects = [
   {
@@ -54,69 +55,75 @@ function OdinHub() {
   const [activeProject, setActiveProject] = useState(null);
 
   return (
-    <main className={styles.odinHubContainer}>
-      <header className={styles.pageHeader}>
-        <h2>The Odin Project Showcase</h2>
-        <p className={styles.pageIntro}>
-          My favourite projects from The Odin Project curriculum.
-        </p>
-      </header>
+    <main className={styles.fullBleedCanvas}>
+      {/* 2. This locks your text and cards into your 1200px centered grid */}
+      <div className="pageContainer">
+        <div className={`pageHeaderBanner ${styles.odinHeaderTheme}`}>
+          <div>
+            <h2>The Odin Project Showcase</h2>
+            <p>My favourite projects from The Odin Project curriculum.</p>
+            <p>Click the Odin Logo to pay them a visit!</p> <br />
+            <a href="https://www.theodinproject.com/">
+              {" "}
+              <img src="/images/odin_logo.svg" alt="" />
+            </a>
+          </div>
+        </div>
 
-      <div className={styles.projectsGrid}>
-        {odinProjects.map((project) => (
-          <article key={project.title} className={styles.projectCard}>
-            <div className={styles.cardHeader}>
-              <h3>{project.title}</h3>
-              <span className={styles.projectSubtitle}>{project.subtitle}</span>
-            </div>
-
-            <div className={styles.techBadgeContainer}>
-              {project.techStack.map((tech) => (
-                <span key={tech} className={styles.techBadge}>
-                  {tech}
-                </span>
-              ))}
-            </div>
-
-            <p className={styles.projectDescription}>{project.description}</p>
-
-            {project.isFreeTier && (
-              <div className={styles.freeTierWarning}>
-                ☕ Hosted on a free tier. Please allow a minute for the server
-                to wake up on your first click!
+        <div className="projectsGrid">
+          {odinProjects.map((project) => (
+            <article key={project.title} className="projectCard">
+              <div className="cardHeader">
+                <h3>{project.title}</h3>
+                <span className="projectSubtitle">{project.subtitle}</span>
               </div>
-            )}
 
-            <div className={styles.cardActions}>
-              <a
-                href={project.liveUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={`${styles.btn} ${styles.btnPrimary}`}
-              >
-                Launch App ↗
-              </a>
-              <a
-                href={project.githubUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={`${styles.btn} ${styles.btnSecondary}`}
-              >
-                Github Repo
-              </a>
-              {/* NEW: Button to trigger the in-app Readme menu */}
-              <button
-                onClick={() => setActiveProject(project)}
-                className={`${styles.btn} ${styles.btnSecondary}`}
-              >
-                Github Readme
-              </button>
-            </div>
-          </article>
-        ))}
+              <div className="techBadgeContainer">
+                {project.techStack.map((tech) => (
+                  <span key={tech} className="techBadge">
+                    {tech}
+                  </span>
+                ))}
+              </div>
+
+              <p className="projectDescription">{project.description}</p>
+
+              {project.isFreeTier && (
+                <div className="freeTierWarning">
+                  ☕ Hosted on a free tier. Please allow a minute for the server
+                  to wake up on your first click!
+                </div>
+              )}
+
+              <div className="cardActions">
+                <a
+                  href={project.liveUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btnPrimary"
+                >
+                  Launch App ↗
+                </a>
+                <a
+                  href={project.githubUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btnSecondary"
+                >
+                  Github Repo
+                </a>
+                <button
+                  onClick={() => setActiveProject(project)}
+                  className="btn btnSecondary"
+                >
+                  Github Readme
+                </button>
+              </div>
+            </article>
+          ))}
+        </div>
       </div>
 
-      {/* The Modal Handler */}
       <ReadmeModal
         key={activeProject?.repo || "empty"}
         isOpen={!!activeProject}
