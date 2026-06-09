@@ -201,6 +201,19 @@
   opacity: 0.9;
 }
 
+/* Images */
+.readingCard img {
+  width: 100%;
+  border-radius: 8px;
+  border: 1px solid var(--border-subtle);
+  cursor: zoom-in;
+  transition: transform 0.2s ease;
+}
+
+.readingCard img:hover {
+  transform: scale(1.02); /* Subtle pop on hover to show it's interactable */
+}
+
 /* RESPONSIVE LAYOUT RESPONSES */
 @media (max-width: 968px) {
   .splitLayout {

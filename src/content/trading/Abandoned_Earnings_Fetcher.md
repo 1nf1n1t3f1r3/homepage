@@ -38,7 +38,19 @@ The sanity checking step is there to drop duplicate reports. If there's an issue
 
 ### Conclusion
 
-In a way, it wasn't that bad. Overall, it did get most of them right. However, what's the point of working with faulty data at all? Trading is hard and there's no point in building on shaky foundations that aren't trustworthy. That's the point where this had to be thrown out.
+In a way, it wasn't that bad. Overall, it did get most of them right. However, what's the point of working with faulty data at all? Trading is hard and there's no point in building on shaky foundations that aren't trustworthy. That's the point where this had to be thrown out. Still... It is very funny to see it in action. I hope that's not just me.
+
+#### Video
+
+![Terminal Script Execution Loop](/images/sec_scraper_demo.gif)
+SEC Scraper goes BRRRR
+
+#### Output
+
+Here's a Screenshot of what the output can look like in a Libreoffice .csv file. I know it's a bit small, so you can download the .csv by clicking the button, or you can press RMB on the image and open it in a new tab to see it full-sized.
+
+![SEC Scraper Spreadsheet Output](/images/sec_scraper_output.png)
+[📥 Download Sample Output Dataset (.csv)](/downloads/AAPL_Final_Earnings_Issues.csv)
 
 ## Pinescript Bonus
 

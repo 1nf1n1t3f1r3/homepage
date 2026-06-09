@@ -34,13 +34,18 @@ def convert_to_date(date_str):
 
 
 
-def initialize_driver(chrome_user_data_dir, chrome_profile, chrome_driver_path, download_dir):
+def initialize_driver(chrome_user_data_dir, chrome_profile, download_dir):
     """
-    Initialize the WebDriver with specified options.
+    Initialize the WebDriver with specified options using Selenium's automatic driver manager.
     """
     options = webdriver.ChromeOptions()
     options.add_argument(f"user-data-dir={chrome_user_data_dir}")
     options.add_argument(f"profile-directory={chrome_profile}")
+
+    # Crucial arguments for modern Chrome + Selenium stability
+    options.add_argument("--no-sandbox")
+    options.add_argument("--disable-dev-shm-usage")
+    options.add_argument("--remote-debugging-port=9222")
 
     # Set up Chrome preferences to handle downloads
     prefs = {
@@ -52,7 +57,8 @@ def initialize_driver(chrome_user_data_dir, chrome_profile, chrome_driver_path, 
     }
     options.add_experimental_option("prefs", prefs)
 
-    driver = webdriver.Chrome(options=options)
+    # Selenium will automatically fetch the correct driver version for your Chrome application
+    driver = webdriver.Chrome()
     return driver
 
 SEC_URL = "https://www.sec.gov/edgar/search/"
@@ -72,20 +78,24 @@ def get_8k_filings_selenium(ticker):
     # Enter the ticker in the search box
     search_box.send_keys(ticker)
     search_box.submit()  # Submit the form
-    time.sleep(1)
+    time.sleep(3)
 
     # Wait until the second input field is clickable and enter the ticker again
     full_form_box = WebDriverWait(driver, 10).until(
         EC.element_to_be_clickable((By.ID, "entity-full-form"))
     )
     full_form_box.send_keys(ticker)
-    time.sleep(.5)
+    time.sleep(3)
+
+    print("0")
 
     # Select the full company name by pressing the arrow down key and Enter
     full_form_box.send_keys(Keys.ARROW_DOWN)
-    time.sleep(.5)
+    time.sleep(2)
     full_form_box.send_keys(Keys.RETURN)
-    time.sleep(.5)
+    time.sleep(2)
+
+    print("1")
 
     # Wait until the date range dropdown is clickable
     date_range_dropdown = WebDriverWait(driver, 10).until(
@@ -97,16 +107,27 @@ def get_8k_filings_selenium(ticker):
     select.select_by_value("all")
     time.sleep(1)
 
+    print("2")
+
     # First, click the correct dropdown menu to reveal form type filters
     filter_menu_button = WebDriverWait(driver, 10).until(
-        EC.element_to_be_clickable((By.XPATH, "//a[@data-toggle='collapse'][@href='#collapseTwo2']"))
+        EC.element_to_be_clickable((By.ID, "show-filing-types"))
     )
     filter_menu_button.click()
     time.sleep(1)  # Allow animation to complete
 
+    print("3")
+
     # Now, select the 8-K option inside the expanded dropdown
     form_filter = WebDriverWait(driver, 10).until(
-        EC.element_to_be_clickable((By.XPATH, "//a[@data-filter-key='8-K']"))
+        EC.element_to_be_clickable((By.ID, "fcb158"))
+    )
+    form_filter.click()
+    time.sleep(2)
+
+    # Now, select the 8-K option inside the expanded dropdown
+    form_filter = WebDriverWait(driver, 10).until(
+        EC.element_to_be_clickable((By.ID, "custom_forms_set"))
     )
     form_filter.click()
     time.sleep(2)
@@ -653,7 +674,7 @@ tickers = tickers_df["Ticker"].unique()  # Ensure unique tickers
 issue_log = []
 
 # Initialize Chrome Driver Before Loop
-driver = initialize_driver(chrome_user_data_dir, chrome_profile, chrome_driver_path, download_dir)
+driver = initialize_driver(chrome_user_data_dir, chrome_profile, download_dir)
 
 for ticker in tickers:
     print(f"🚀 Processing {ticker}...")
@@ -664,8 +685,11 @@ for ticker in tickers:
         # Step 1: Use Selenium to navigate to the 8-K Filings
         get_8k_filings_selenium(ticker)
 
+        print(f"1: Got 8K Filings")
+
         # Step 2: Collect all 8-K filings links and dates
         all_filings = collect_8k_links(driver)
+        print(f"2: Got all Filings")
 
         # Step 3: Extract structured earnings data for all filings
         extracted_data = [
@@ -674,6 +698,7 @@ for ticker in tickers:
 
         # Filter out None values
         extracted_data = [data for data in extracted_data if data]
+        print(f"3: Extracted Data")
 
         # Step 4: Determine confidence level for each extracted report
         structured_earnings_data = [determine_confidence_level(data) for data in extracted_data]
