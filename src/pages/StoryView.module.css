@@ -172,30 +172,85 @@
   color: var(--text-muted);
 }
 
-/* THE SCROLLABLE INDEPENDENT CODE CORE */
+/* ==========================================================================
+   PRISM VANILLA SYNTAX HIGHLIGHTING TOKENS
+   ========================================================================== */
+
+/* 1. Clear out default margins/padding that pre tags sometimes inherit */
 .codeFrame pre {
   margin: 0;
   padding: 24px;
-  overflow-y: auto; /* Scroll script data vertically */
-  overflow-x: auto; /* Allow code blocks to scroll horizontally instead of leaking out */
-  flex-grow: 1; /* Automatically expands to fill frame space nicely */
+  background-color: #0d1117; /* Forces your beautiful dark background back */
+  overflow-y: auto;
+  overflow-x: auto;
+  flex-grow: 1;
 }
 
 .codeFrame code {
   font-family: "Courier New", Courier, monospace;
   font-size: 0.9rem;
-  color: #e6edf3;
   line-height: 1.6;
-  white-space: pre; /* Keeps code whitespace structurally intact without forcing lines to break wrap */
+  color: #e6edf3; /* Default text color (variables, plain text) */
 }
 
-/* Fallback container indicator */
-.noCodeBox {
-  border: 2px dashed var(--border-subtle);
-  border-radius: 12px;
-  padding: 40px;
-  text-align: center;
-  color: var(--text-muted);
+/* 2. VSCode Theme Color Tokens mapping */
+.codeFrame :global(.token.comment),
+.codeFrame :global(.token.prolog),
+.codeFrame :global(.token.doctype),
+.codeFrame :global(.token.cdata) {
+  color: #8b949e; /* Muted code comment gray */
+  font-style: italic;
+}
+
+.codeFrame :global(.token.keyword) {
+  color: #ff7b72; /* VSCode Salmon Red (import, def, return, for, in) */
+  font-weight: 600;
+}
+
+.codeFrame :global(.token.string),
+.codeFrame :global(.token.char) {
+  color: #a5d6ff; /* VSCode Soft Blue (Strings, file paths, parameters) */
+}
+
+.codeFrame :global(.token.function),
+.codeFrame :global(.token.class-name) {
+  color: #d2a8ff; /* VSCode Royal Purple (Functions, method calls) */
+}
+
+.codeFrame :global(.token.number),
+.codeFrame :global(.token.boolean) {
+  color: #ff9b5e; /* VSCode Neon Orange (Numbers, True, False, None) */
+}
+
+.codeFrame :global(.token.operator),
+.codeFrame :global(.token.entity),
+.codeFrame :global(.token.url) {
+  color: #ff7b72; /* Operators (=, +, -, ==) */
+}
+
+.codeFrame :global(.token.property),
+.codeFrame :global(.token.tag),
+.codeFrame :global(.token.constant) {
+  color: #79c0ff; /* Constants and variables */
+}
+
+/* Custom Scrollbar skinning for your scrollable pre block */
+.codeFrame pre::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.codeFrame pre::-webkit-scrollbar-track {
+  background: #0d1117;
+}
+
+.codeFrame pre::-webkit-scrollbar-thumb {
+  background: #21262d;
+  border-radius: 4px;
+}
+
+.codeFrame pre::-webkit-scrollbar-thumb:hover {
+  background: #30363d;
 }
 
 /* BUTTON CONVERSIONS FOR MARKDOWN LINKS */

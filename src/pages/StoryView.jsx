@@ -1,10 +1,13 @@
 // src/pages/StoryView.jsx
-import { useState } from "react";
+import { useState, useEffect } from "react"; // Added useEffect to trigger syntax highlighting pass
 import { useParams, Link } from "react-router-dom";
 import ReactMarkdown from "react-markdown";
 import styles from "./StoryView.module.css";
 
-// 1. Snag the eagerly bundled modules out here at the top file level (only once!)
+// 1. Import Vanilla Prism for bulletproof parsing
+import Prism from "prismjs";
+import "prismjs/components/prism-python"; // Injects Python syntax rules
+
 const mdModules = import.meta.glob("../content/trading/*.md", {
   query: "?raw",
   eager: true,
@@ -16,18 +19,22 @@ const codeModules = import.meta.glob("../content/trading/*.py", {
 
 function StoryView() {
   const { storyId } = useParams();
-
-  // 2. Keep state ONLY for dynamic, user-driven actions (like the modal overlay)
   const [activeModalImg, setActiveModalImg] = useState(null);
 
-  // 3. PURE DATA DERIVATION: Zero useEffects, zero extra re-renders
   const mdPath = `../content/trading/${storyId}.md`;
   const codePath = `../content/trading/${storyId}.py`;
 
   const markdownContent = mdModules[mdPath]?.default || null;
   const codeContent = codeModules[codePath]?.default || null;
 
-  // Intercept the default markdown image render loop
+  // 2. Tell Prism to run through the DOM and color the code tags right after paint frames
+  useEffect(() => {
+    if (markdownContent || codeContent) {
+      Prism.highlightAll();
+    }
+  }, [markdownContent, codeContent, storyId]);
+
+  // Intercept the default markdown image and code render loops
   const markdownRenderComponents = {
     img: ({ src, alt }) => (
       <img
@@ -37,9 +44,15 @@ function StoryView() {
         onClick={() => setActiveModalImg({ src, alt })}
       />
     ),
+    // Ensures any code snippets inside the markdown markdown text column also get tokens applied
+    code: ({ inline, className, children }) => {
+      const language = className
+        ? className.replace("language-", "")
+        : "python";
+      return <code className={`language-${language}`}>{children}</code>;
+    },
   };
 
-  // 4. Bail out immediately if the path is invalid
   if (!markdownContent) {
     return (
       <div className="pageContainer">
@@ -69,8 +82,9 @@ function StoryView() {
                 <div className={styles.codeFrameHeader}>
                   <span>{storyId}.py</span>
                 </div>
-                <pre>
-                  <code>{codeContent}</code>
+                {/* 3. Added the standard Prism target class "language-python" here */}
+                <pre className="language-python">
+                  <code className="language-python">{codeContent}</code>
                 </pre>
               </div>
             ) : (
