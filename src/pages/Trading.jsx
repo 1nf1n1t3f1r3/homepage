@@ -1,8 +1,6 @@
 // src/pages/Trading.jsx
 
-import React, { useState } from "react";
-import ReadmeModal from "../components/GitHubReadmeModal";
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import styles from "./Trading.module.css"; // Bring back the module layout helper
 
@@ -16,12 +14,12 @@ const tradingProjects = [
     slug: "Abandoned_Earnings_Fetcher",
   },
   {
-    title: "Placeholder",
-    subtitle: "",
-    techStack: [""],
-    description: "",
-    liveUrl: "",
-    slug: "",
+    title: "Data_Analysis",
+    subtitle: "Data into 3D Charts",
+    techStack: ["Python", "Pandas", "Matplotlib", "KFold", "Seaborn"],
+    description:
+      "Too many moving parts and too much data lead to a need to analyze it a bit more efficiently",
+    slug: "Data_Analysis",
   },
 ];
 
@@ -33,7 +31,7 @@ function Trading() {
           <div>
             <h2>Trading Stories</h2>
             <p>A selection of scripts I've written for my trading.</p>
-            <p>With accompanying stories as to how I got there.</p>
+            <p>With accompanying stories as to how they got there.</p>
             <p>Feel free to give them a read! </p>
           </div>
         </div>

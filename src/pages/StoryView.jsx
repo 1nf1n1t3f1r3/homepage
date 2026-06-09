@@ -1,51 +1,48 @@
 // src/pages/StoryView.jsx
-import React, { useEffect, useState } from "react";
+import { useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import ReactMarkdown from "react-markdown";
 import styles from "./StoryView.module.css";
 
+// 1. Snag the eagerly bundled modules out here at the top file level (only once!)
+const mdModules = import.meta.glob("../content/trading/*.md", {
+  query: "?raw",
+  eager: true,
+});
+const codeModules = import.meta.glob("../content/trading/*.py", {
+  query: "?raw",
+  eager: true,
+});
+
 function StoryView() {
   const { storyId } = useParams();
-  const [markdownContent, setMarkdownContent] = useState("");
-  const [codeContent, setCodeContent] = useState("");
-  const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    // 1. Map both file extensions in the directory as raw text strings
-    const mdModules = import.meta.glob("../content/trading/*.md", {
-      query: "?raw",
-      eager: true,
-    });
-    const codeModules = import.meta.glob("../content/trading/*.py", {
-      query: "?raw",
-      eager: true,
-    });
+  // 2. Keep state ONLY for dynamic, user-driven actions (like the modal overlay)
+  const [activeModalImg, setActiveModalImg] = useState(null);
 
-    // 2. Generate target lookup keys
-    const mdPath = `../content/trading/${storyId}.md`;
-    const codePath = `../content/trading/${storyId}.py`;
+  // 3. PURE DATA DERIVATION: Zero useEffects, zero extra re-renders
+  const mdPath = `../content/trading/${storyId}.md`;
+  const codePath = `../content/trading/${storyId}.py`;
 
-    // 3. Extract the text payloads
-    if (mdModules[mdPath]) {
-      setMarkdownContent(mdModules[mdPath].default);
-    }
+  const markdownContent = mdModules[mdPath]?.default || null;
+  const codeContent = codeModules[codePath]?.default || null;
 
-    if (codeModules[codePath]) {
-      setCodeContent(codeModules[codePath].default);
-    }
+  // Intercept the default markdown image render loop
+  const markdownRenderComponents = {
+    img: ({ src, alt }) => (
+      <img
+        src={src}
+        alt={alt}
+        className={styles.zoomableMarkdownImg}
+        onClick={() => setActiveModalImg({ src, alt })}
+      />
+    ),
+  };
 
-    setLoading(false);
-  }, [storyId]);
-
-  if (loading)
-    return (
-      <div className={styles.storyContainer}>
-        <p>Loading chronicle...</p>
-      </div>
-    );
+  // 4. Bail out immediately if the path is invalid
   if (!markdownContent) {
     return (
-      <div className={styles.storyContainer}>
+      <div className="pageContainer">
         <h2>Story not found</h2>
         <Link to="/trading">← Back to Trading Hub</Link>
       </div>
@@ -56,14 +53,16 @@ function StoryView() {
     <main className={styles.fullBleedCanvas}>
       <div className={styles.storyContainer}>
         <div className={styles.splitLayout}>
-          {/* Left Column: The Narrative Chronicle */}
+          {/* Left Column: Story */}
           <section className={styles.narrativeColumn}>
             <article className={styles.readingCard}>
-              <ReactMarkdown>{markdownContent}</ReactMarkdown>
+              <ReactMarkdown components={markdownRenderComponents}>
+                {markdownContent}
+              </ReactMarkdown>
             </article>
           </section>
 
-          {/* Right Column: Code Blueprint (Sticky Container) */}
+          {/* Right Column: Code Window */}
           <section className={styles.codeColumn}>
             {codeContent ? (
               <div className={styles.codeFrame}>
@@ -76,17 +75,32 @@ function StoryView() {
               </div>
             ) : (
               <div className={styles.noCodeBox}>
-                <p>
-                  No associated code engine script file found for this entry.
-                </p>
+                <p>No associated code script file found.</p>
               </div>
             )}
           </section>
         </div>
+
         <Link to="/trading" className={styles.backBtn}>
           ← Back to Trading Hub
         </Link>
       </div>
+
+      {/* DYNAMIC BACKDROP LIGHTBOX ZOOM OVERLAY */}
+      {activeModalImg && (
+        <div
+          className={styles.lightboxOverlay}
+          onClick={() => setActiveModalImg(null)}
+        >
+          <div className={styles.lightboxCloseBtn}>&times;</div>
+          <img
+            src={activeModalImg.src}
+            alt={activeModalImg.alt}
+            className={styles.lightboxActiveStage}
+            onClick={(e) => e.stopPropagation()}
+          />
+        </div>
+      )}
     </main>
   );
 }

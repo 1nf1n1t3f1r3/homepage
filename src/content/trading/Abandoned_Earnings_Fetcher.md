@@ -47,10 +47,9 @@ SEC Scraper goes BRRRR
 
 #### Output
 
-Here's a Screenshot of what the output can look like in a Libreoffice .csv file. I know it's a bit small, so you can download the .csv by clicking the button, or you can press RMB on the image and open it in a new tab to see it full-sized.
+Here's a Screenshot of what the output can look like in a Libreoffice .csv file.
 
 ![SEC Scraper Spreadsheet Output](/images/sec_scraper_output.png)
-[📥 Download Sample Output Dataset (.csv)](/downloads/AAPL_Final_Earnings_Issues.csv)
 
 ## Pinescript Bonus
 
