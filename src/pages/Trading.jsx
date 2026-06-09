@@ -21,6 +21,20 @@ const tradingProjects = [
       "Too many moving parts and too much data lead to a need to analyze it a bit more efficiently",
     slug: "Data_Analysis",
   },
+  {
+    title: "Pinescript Utilities",
+    subtitle: "Handy Stuff for Tradingviewers",
+    techStack: ["Pinescript"],
+    description: "A small Repo containing some of my Pinescript Tools",
+    slug: "Pinescript_Utilities",
+  },
+  {
+    title: "Want More?",
+    subtitle: "Let me know :)",
+    techStack: [""],
+    description: "",
+    slug: "",
+  },
 ];
 
 function Trading() {

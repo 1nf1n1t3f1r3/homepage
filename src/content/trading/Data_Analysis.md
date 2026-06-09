@@ -40,8 +40,8 @@ The 3D Plot is, in my opinion, the most informative. It quickly informs us about
 
 Also, you can turn those plots around. How cool is that? I mean... Not on the website... These are just .png files, but you get the idea.
 
-![SEC Scraper Spreadsheet Output](/images/3d_Figure_1.png)
-![SEC Scraper Spreadsheet Output](/images/3d_Figure_2.png)
+![3D Plot](/images/3d_Figure_1.png)
+![3D Plot](/images/3d_Figure_2.png)
 
 ---
 
@@ -49,8 +49,8 @@ Also, you can turn those plots around. How cool is that? I mean... Not on the we
 
 Here's some images of the bar charts output, showing the 0.5 and 1.0 Base ATR Multiplier do much better. The sharp drop to their sides is a little suspicious... However, it also shows the Standard Deviation of using 1 Base ATR Multiplier is lower than using 0.5, which works in its favour.
 
-![SEC Scraper Spreadsheet Output](/images/Bar_Figure_1.png)
-![SEC Scraper Spreadsheet Output](/images/Bar_Figure_2.png)
+![Bar Chart](/images/Bar_Figure_1.png)
+![Bar Chart](/images/Bar_Figure_2.png)
 
 ### Line Chart
 
@@ -58,5 +58,5 @@ Finally the line charts, giving their opinion on the various On/Off toggles. Mos
 
 ---
 
-![SEC Scraper Spreadsheet Output](/images/Line_1.png)
-![SEC Scraper Spreadsheet Output](/images/Line_2.png)
+![Line Chart](/images/Line_1.png)
+![Line Chart](/images/Line_2.png)
