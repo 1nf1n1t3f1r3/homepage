@@ -9,12 +9,11 @@ import styles from "./Trading.module.css"; // Bring back the module layout helpe
 const tradingProjects = [
   {
     title: "Simple Input File Test",
-    subtitle: "Tradingview Trade Tester",
-    techStack: ["Python", "Tradingview", "Pandas"],
-    description: "The oldest trading file I could still find on my system. ",
-    githubUrl: "https://github.com/1nf1n1t3f1r3/masque_de_fer",
-    repo: "1nf1n1t3f1r3/masque_de_fer",
-    image: "/images/masque_de_fer-preview.png",
+    subtitle: "Scraping the SEC",
+    techStack: ["Python", "Selenium", "Pandas", "BeautifulSoup"],
+    description:
+      "A script I wrote to get earnings data directly from the SEC. It wasn't exactly worth the effort.",
+    slug: "Abandoned_Earnings_Fetcher", // 1. This matches your "src/content/trading/simple-input-test.md" filename exactly
   },
   {
     title: "Placeholder",
@@ -22,32 +21,11 @@ const tradingProjects = [
     techStack: [""],
     description: "",
     liveUrl: "",
-    githubUrl: "",
-    repo: "",
-    image: "",
-  },
-  {
-    title: "Placeholder",
-    subtitle: "",
-    techStack: [""],
-    description: "",
-    liveUrl: "",
-    githubUrl: "",
-    repo: "",
-    image: "",
+    slug: "",
   },
 ];
 
 function Trading() {
-  // Track which project is actively being viewed in the modal
-  const [activeProject, setActiveProject] = useState(null);
-
-  const location = useLocation();
-
-  // Helper to add an 'active' class to the current page link
-  const isActive = (path) =>
-    location.pathname === path ? "nav-link active" : "nav-link";
-
   return (
     <main className={styles.fullBleedCanvas}>
       {/* 2. This locks your text and cards into your 1200px centered grid */}
@@ -75,44 +53,31 @@ function Trading() {
               </div>
 
               <div className="techBadgeContainer">
-                {project.techStack.map((tech) => (
-                  <span key={tech} className="techBadge">
-                    {tech}
-                  </span>
-                ))}
+                {project.techStack.map(
+                  (tech) =>
+                    /* Only render a badge if tech is not an empty string */
+                    tech && (
+                      <span key={tech} className="techBadge">
+                        {tech}
+                      </span>
+                    ),
+                )}
               </div>
 
               <p className="projectDescription">{project.description}</p>
 
-              {project.isFreeTier && (
-                <div className="freeTierWarning">
-                  ☕ Hosted on a free tier. Please allow a minute for the server
-                  to wake up on your first click!
-                </div>
-              )}
-
               <div className="cardActions">
-                <a
-                  href={project.githubUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <Link
+                  to={`/trading/${project.slug}`}
                   className="btn btnPrimary"
                 >
                   Read some Thoughts
-                </a>
+                </Link>
               </div>
             </article>
           ))}
         </div>
       </div>
-
-      <ReadmeModal
-        key={activeProject?.repo || "empty"}
-        isOpen={!!activeProject}
-        repo={activeProject?.repo}
-        projectImage={activeProject?.image}
-        onClose={() => setActiveProject(null)}
-      />
     </main>
   );
 }

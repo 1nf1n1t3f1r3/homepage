@@ -3,9 +3,10 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
+import MyWebsites from "./pages/MyWebsites";
 import OdinHub from "./pages/OdinHub";
 import Trading from "./pages/Trading";
-import MyWebsites from "./pages/MyWebsites";
+import StoryView from "./pages/StoryView"; // The single template page
 
 // Tiny placeholder components for your pages (you can move these to separate files later!)
 const Home = () => (
@@ -56,6 +57,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/odin" element={<OdinHub />} />
         <Route path="/trading" element={<Trading />} />
+        <Route path="/trading/:storyId" element={<StoryView />} />
         <Route path="/unity" element={<UnityDev />} />
         <Route path="/mywebsites" element={<MyWebsites />} />
       </Routes>
