@@ -57,7 +57,7 @@ function OdinHub() {
   return (
     <main className={styles.fullBleedCanvas}>
       {/* 2. This locks your text and cards into your 1200px centered grid */}
-      <div className="pageContainer">
+      <div className="gridContainer">
         <div className={`pageHeaderBanner ${styles.odinHeaderTheme}`}>
           <div>
             <h2>The Odin Project Showcase</h2>

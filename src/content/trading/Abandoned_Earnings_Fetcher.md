@@ -36,7 +36,7 @@ I wonder what sanity I was checking. Anwyay, this step is there to drop duplicat
 
 ## Pinescript to the Rescue
 
-So.. It turns out that Tradingview _does_ actually store the earnings data. It just doesn't display it. But, it's easy to ask it to with Pinescript. The more you know.
+So.. It turns out that Tradingview _does_ actually store the earnings data. It just doesn't display it. But, it's easy to ask it to with Pinescript. Then you can get this data in .csv format by Exporting it. The more you know.
 
 ```
 //@version=5

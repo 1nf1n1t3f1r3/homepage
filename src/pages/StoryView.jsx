@@ -7,25 +7,31 @@ import styles from "./StoryView.module.css";
 function StoryView() {
   const { storyId } = useParams();
   const [markdownContent, setMarkdownContent] = useState("");
+  const [codeContent, setCodeContent] = useState("");
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // 1. Tell Vite to map the entire directory of markdown files eagerly as raw text strings
-    const modules = import.meta.glob("../content/trading/*.md", {
+    // 1. Map both file extensions in the directory as raw text strings
+    const mdModules = import.meta.glob("../content/trading/*.md", {
+      query: "?raw",
+      eager: true,
+    });
+    const codeModules = import.meta.glob("../content/trading/*.py", {
       query: "?raw",
       eager: true,
     });
 
-    // 2. Construct the exact path lookup key
-    const targetPath = `../content/trading/${storyId}.md`;
+    // 2. Generate target lookup keys
+    const mdPath = `../content/trading/${storyId}.md`;
+    const codePath = `../content/trading/${storyId}.py`;
 
-    // 3. Look up the file in our pre-mapped modules
-    const matchedModule = modules[targetPath];
+    // 3. Extract the text payloads
+    if (mdModules[mdPath]) {
+      setMarkdownContent(mdModules[mdPath].default);
+    }
 
-    if (matchedModule) {
-      setMarkdownContent(matchedModule.default);
-    } else {
-      console.error(`Story file not found at: ${targetPath}`);
+    if (codeModules[codePath]) {
+      setCodeContent(codeModules[codePath].default);
     }
 
     setLoading(false);
@@ -33,13 +39,13 @@ function StoryView() {
 
   if (loading)
     return (
-      <div className="pageContainer">
+      <div className={styles.storyContainer}>
         <p>Loading chronicle...</p>
       </div>
     );
   if (!markdownContent) {
     return (
-      <div className="pageContainer">
+      <div className={styles.storyContainer}>
         <h2>Story not found</h2>
         <Link to="/trading">← Back to Trading Hub</Link>
       </div>
@@ -48,13 +54,39 @@ function StoryView() {
 
   return (
     <main className={styles.storyCanvas}>
-      <div className="pageContainer">
+      <div className={styles.storyContainer}>
         <Link to="/trading" className={styles.backBtn}>
           ← Back to Trading Hub
         </Link>
-        <article className={styles.markdownWrapper}>
-          <ReactMarkdown>{markdownContent}</ReactMarkdown>
-        </article>
+
+        <div className={styles.splitLayout}>
+          {/* Left Column: The Narrative Chronicle */}
+          <section className={styles.narrativeColumn}>
+            <article className={styles.readingCard}>
+              <ReactMarkdown>{markdownContent}</ReactMarkdown>
+            </article>
+          </section>
+
+          {/* Right Column: Code Blueprint (Sticky Container) */}
+          <section className={styles.codeColumn}>
+            {codeContent ? (
+              <div className={styles.codeFrame}>
+                <div className={styles.codeFrameHeader}>
+                  <span>{storyId}.py</span>
+                </div>
+                <pre>
+                  <code>{codeContent}</code>
+                </pre>
+              </div>
+            ) : (
+              <div className={styles.noCodeBox}>
+                <p>
+                  No associated code engine script file found for this entry.
+                </p>
+              </div>
+            )}
+          </section>
+        </div>
       </div>
     </main>
   );

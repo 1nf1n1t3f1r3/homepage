@@ -1,0 +1,183 @@
+/* src/pages/StoryView.module.css */
+
+.storyCanvas {
+  width: 100%;
+  min-height: calc(100vh - 80px);
+  background: var(--bg-app);
+}
+
+/* Page Outer Structure */
+.storyContainer {
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.backBtn {
+  display: inline-block;
+  margin-bottom: 24px;
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: color 0.2s ease;
+}
+
+.backBtn:hover {
+  color: var(--text-main);
+}
+
+/* ==========================================================================
+   THE BULLETPROOF 50/50 SPLIT ENGINE
+   ========================================================================== */
+.splitLayout {
+  display: grid;
+  /* minmax(0, 1fr) cuts off horizontal blowouts by allowing columns to shrink */
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 40px;
+  align-items: start;
+}
+
+/* 1. Left Grid Child Wrapper */
+.narrativeColumn {
+  min-width: 0; /* Defensive CSS: forces content to wrap inside the 50% boundary */
+}
+
+/* 2. Right Grid Child Wrapper (Sticky Container) */
+.codeColumn {
+  position: sticky;
+  top: 100px; /* Pins beautifully right underneath your sticky navbar line */
+  max-height: calc(100vh - 140px); /* Restricts box sizing to screen boundary */
+  display: flex;
+  flex-direction: column;
+  min-width: 0; /* Defensive CSS: stops massive code strings from pushing the box outward */
+}
+
+/* THE STORY READER SURFACE CARD */
+.readingCard {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: 16px;
+  padding: 40px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+}
+
+/* TYPOGRAPHY OVERRIDES */
+.readingCard h1 {
+  font-size: 2.4rem;
+  color: var(--text-main);
+  margin-bottom: 8px;
+  font-weight: 800;
+}
+
+.readingCard h2,
+.readingCard h3 {
+  font-size: 1.4rem;
+  color: #10b981; /* Premium trading terminal green accent line */
+  margin-top: 32px;
+  margin-bottom: 16px;
+  font-weight: 700;
+}
+
+.readingCard p {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: #c9d1d9;
+  margin-bottom: 20px;
+}
+
+/* INLINE CODE BLOCK WRAPPING (Inside the markdown text column) */
+.readingCard pre {
+  background-color: #0d1117;
+  padding: 20px;
+  border-radius: 8px;
+  overflow-x: auto; /* Allows horizontal scrolling inside the text flow box */
+  border: 1px solid var(--border-subtle);
+  margin: 24px 0;
+}
+
+.readingCard code {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 0.9rem;
+  color: #e6edf3;
+  line-height: 1.5;
+}
+
+/* ==========================================================================
+   THE MAIN CODE TERMINAL FRAME LAYOUT
+   ========================================================================== */
+.codeFrame {
+  background-color: #0d1117;
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  height: 100%; /* Spans the maximum constraints of the codeColumn parent container */
+}
+
+/* File name tab row bar over the terminal */
+.codeFrameHeader {
+  background-color: #161b22;
+  padding: 10px 20px;
+  border-bottom: 1px solid var(--border-subtle);
+  font-family: monospace;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+/* THE SCROLLABLE INDEPENDENT CODE CORE */
+.codeFrame pre {
+  margin: 0;
+  padding: 24px;
+  overflow-y: auto; /* Scroll script data vertically */
+  overflow-x: auto; /* Allow code blocks to scroll horizontally instead of leaking out */
+  flex-grow: 1; /* Automatically expands to fill frame space nicely */
+}
+
+.codeFrame code {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 0.9rem;
+  color: #e6edf3;
+  line-height: 1.6;
+  white-space: pre; /* Keeps code whitespace structurally intact without forcing lines to break wrap */
+}
+
+/* Fallback container indicator */
+.noCodeBox {
+  border: 2px dashed var(--border-subtle);
+  border-radius: 12px;
+  padding: 40px;
+  text-align: center;
+  color: var(--text-muted);
+}
+
+/* BUTTON CONVERSIONS FOR MARKDOWN LINKS */
+.readingCard a {
+  display: inline-block;
+  background-color: var(--text-main);
+  color: var(--bg-app);
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-weight: 600;
+  text-decoration: none;
+  margin-top: 15px;
+  transition: opacity 0.2s ease;
+}
+
+.readingCard a:hover {
+  opacity: 0.9;
+}
+
+/* RESPONSIVE LAYOUT RESPONSES */
+@media (max-width: 968px) {
+  .splitLayout {
+    grid-template-columns: 1fr; /* Stack into single column pane layout gracefully */
+    gap: 30px;
+  }
+
+  .codeColumn {
+    position: static; /* Unpin stickiness on compact tablets and devices */
+    max-height: 500px; /* Cap code frame size cleanly on mobile viewports */
+  }
+}

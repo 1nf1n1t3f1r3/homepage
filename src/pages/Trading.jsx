@@ -8,11 +8,11 @@ import styles from "./Trading.module.css"; // Bring back the module layout helpe
 
 const tradingProjects = [
   {
-    title: "Simple Input File Test",
+    title: "Abandoned_Earnings_Fetcher",
     subtitle: "Scraping the SEC",
     techStack: ["Python", "Selenium", "Pandas", "BeautifulSoup"],
     description:
-      "A script I wrote to get earnings data directly from the SEC. It wasn't exactly worth the effort.",
+      "A script I wrote to get earnings data directly from the SEC. There's a reason why it's abandoned.",
     slug: "Abandoned_Earnings_Fetcher", // 1. This matches your "src/content/trading/simple-input-test.md" filename exactly
   },
   {
@@ -29,7 +29,7 @@ function Trading() {
   return (
     <main className={styles.fullBleedCanvas}>
       {/* 2. This locks your text and cards into your 1200px centered grid */}
-      <div className="pageContainer">
+      <div className="gridContainer">
         <div className={`pageHeaderBanner ${styles.odinHeaderTheme}`}>
           <div>
             <h2>Trading Projects</h2>
