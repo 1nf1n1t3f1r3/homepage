@@ -20,8 +20,8 @@
   min-height: calc(100vh - 160px);
 }
 
-.mdfCardTheme {
-  --card-bg-override: var(--card-mdf);
-  --card-hover-override: var(--card-mdf-hover);
-  --card-border-override: var(--card-mdf-border);
+.tradingCardTheme {
+  --card-bg-override: var(--card-trading);
+  --card-hover-override: var(--card-trading-hover);
+  --card-border-override: var(--card-trading-border);
 }

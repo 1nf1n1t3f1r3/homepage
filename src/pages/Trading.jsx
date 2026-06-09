@@ -13,7 +13,7 @@ const tradingProjects = [
     techStack: ["Python", "Selenium", "Pandas", "BeautifulSoup"],
     description:
       "A script I wrote to get earnings data directly from the SEC. There's a reason why it's abandoned.",
-    slug: "Abandoned_Earnings_Fetcher", // 1. This matches your "src/content/trading/simple-input-test.md" filename exactly
+    slug: "Abandoned_Earnings_Fetcher",
   },
   {
     title: "Placeholder",
@@ -28,16 +28,13 @@ const tradingProjects = [
 function Trading() {
   return (
     <main className={styles.fullBleedCanvas}>
-      {/* 2. This locks your text and cards into your 1200px centered grid */}
       <div className="gridContainer">
         <div className={`pageHeaderBanner ${styles.odinHeaderTheme}`}>
           <div>
-            <h2>Trading Projects</h2>
-            <p>
-              A small selection of scripts I've built for my Trading Ventures.
-            </p>
-            <p>These include some of the first scripts I've written. </p>
-            <p>So... Don't expect a get rich quick scheme here!</p>
+            <h2>Trading Stories</h2>
+            <p>A selection of scripts I've written for my trading.</p>
+            <p>With accompanying stories as to how I got there.</p>
+            <p>Feel free to give them a read! </p>
           </div>
         </div>
 
@@ -45,7 +42,7 @@ function Trading() {
           {tradingProjects.map((project) => (
             <article
               key={project.title}
-              className={`projectCard ${styles.mdfCardTheme}`}
+              className={`projectCard ${styles.tradingCardTheme}`}
             >
               <div className="cardHeader">
                 <h3>{project.title}</h3>
@@ -71,7 +68,7 @@ function Trading() {
                   to={`/trading/${project.slug}`}
                   className="btn btnPrimary"
                 >
-                  Read some Thoughts
+                  Tell me more!
                 </Link>
               </div>
             </article>

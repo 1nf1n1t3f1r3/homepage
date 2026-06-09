@@ -1,6 +1,6 @@
 # Scraping the SEC
 
-This is a script I wrote in order to find earnings dates. I couldn't find them consistently on Yahoo Finance, and Tradingview also doesn't display earnings dates when you go back too far. So... I figured I'd get them from the source at the SEC. That was a completely unhinged venture. It's been a while since I actually wrote this thing and I wasn't too big on documenting anything I did back then. Feel free to read all about it, or skip to the bottom for a better solution.
+This is a script I wrote in order to find earnings dates. I couldn't find them consistently on Yahoo Finance, and Tradingview also doesn't display earnings dates when you go back too far. So... I figured I'd get them from the source at the SEC. That was a completely unhinged venture. It's been a while since I actually wrote this, but here's my thoughts, looking back. Feel free to read all about it, or skip to the bottom for a better solution.
 
 ## Earnings
 
@@ -14,29 +14,37 @@ Well, there's two ways to handle these reports. The first is that you simply ign
 
 In order to decide which approach is better, we would first need to know when these earnings reports were actually dropped. Then look at our live and/or backtested trades in order to see if there's a skew in any direction. Data on earnings isn't always too easy to come by in a clean format (at least, that's what I thought, more on that later). However, they all need to share that information with the SEC, so... That's where we'll find it for sure! Then we just need to go and get it, right? That brings us to the scraping.
 
+### Setup
+
+I wrote a script that controls the browser in order to scrape data from the SEC website. It takes a .csv input file, then opens up Google Chrome with Selenium to go and collect the data. This requires a bit of setup to get working. Chrome needs to know your User Data, Profile, and the Chromedriver before you can initialize it. But, once you do, you've got a completely automatable browser open! It can do (almost) everything a human can. Nifty.
+
 ### get_8k_filings_selenium & collect-8k_links
 
-I wrote a script that controls the browser in order to do that. It takes a .csv input file, then goes opens up Google Chrome with Selenium to go the website of the SEC. When there, it navigates the website by finding HTML elements then 'clicking' them. It 'types' the tickers of the input file, then selects the ticker with the Arrow Keys and Return button. At this point, it's looking at all the SEC reports of one company (say, AAPL). But, companies release a lot of reports, so we still need to get the right ones. The so-called 8-K reports are the ones to search for, so it goes to the filter menu on the SEC site and filters only by them. Then it uses the Python library BeautifulSoup to start fetching all of those.
+In this case, it goes to the website of the SEC by entering its URL. When there, it navigates the website by finding HTML elements then 'clicking' them. It 'types' the tickers of the input file, then selects the ticker with the Arrow Keys and Return button. At this point, it's looking at all the SEC reports of one company (say, AAPL). But, companies release a lot of reports, so we still need to get the right ones. The so-called 8-K reports are the ones to search for, so it finds the HTML of the filter menu on the SEC site and selects 8-K to filter by. Then it uses the Python library BeautifulSoup to start investigating all of those.
 
 ### get_earnings_data_selenium_soup
 
-So, now we're looking at reports. But, who has the time to read these things. We spend our time on more reasonable things, like re-inventing wheels and writing hacky code. So, this is where the script looks through the page with the html.parser and looks at the text, it'll find recurring phrases, like 'Q1' and 'first quarter'; not all reports use the same exact phrasing, which is particularly great when it comes to deciding dates. It takes a lot of hacking around to try to find the right one, since there's more than one date per report. Still, when this function is done, it should return a ticker, report type, URL, and a list of dates, making a guess as to which one is the actual report date. For example, the financial quarter ends on March 31, so that's not the earnings date, but a date from a phrase like " ... for the quarter ending March 31."
+So, now we're 'looking' at reports. The script looks through the page with the html.parser and looks at the text, finding phrases that interest us like 'report', 'earnings', etc. and date indicators like 'Q1' and 'first quarter'; not all reports use the same exact phrasing, which is particularly great when it comes to deciding dates. It takes a lot of hacking around to try to find the right one, since there's more than one date per report. Still, when this function is done, it should return a ticker, report type, URL, and a list of dates, making a guess as to which one is the actual report date. For example, the financial quarter ends on March 31, so any mention of 'March 31' is not the earnings date, but a mention of 2010-02-18 very well might be.
 
 ### determine_confidence_level
 
-A small hint, the confidence level should be zero. But, why stop there? In order to analyze the messy data that comes out of the previous function, I figured I'd write another function to determine a 'confidence level'. The idea was that it'd check all the dates and test them based on, aspects like how often they occur. Rather poor metrics, but I couldn't really come up with anything better.
+In order to analyze the messy data that comes out of the previous function, I figured I'd write another function to determine a 'confidence level'. The idea was that it'd check all the dates and test them based on, aspects like how often they occur. Rather poor metrics, but I couldn't really come up with anything better. The confidence level should be low. If sunk cost fallacy didn't exist, this might be a good place to call it.
 
-### extract_earnings_sentences
+### extract_earnings_sentences & sanity_check_earnings_dates
 
 This is the bit that actually extracts the text that is about the reporting date. It works with regex using terms like 'report|release|statement|earnings' etc. And it takes some extra context as well.
 
-### sanity_check_earnings_dates
+The sanity checking step is there to drop duplicate reports. If there's an issue with it the ticker gets flagged as potentially unreliable.
 
-I wonder what sanity I was checking. Anwyay, this step is there to drop duplicate reports. If there's an issue, it the ticker gets flagged.
+### Conclusion
 
-## Pinescript to the Rescue
+In a way, it wasn't that bad. Overall, it did get most of them right. However, what's the point of working with faulty data at all? Trading is hard and there's no point in building on shaky foundations that aren't trustworthy. That's the point where this had to be thrown out.
 
-So.. It turns out that Tradingview _does_ actually store the earnings data. It just doesn't display it. But, it's easy to ask it to with Pinescript. Then you can get this data in .csv format by Exporting it. The more you know.
+## Pinescript Bonus
+
+Fortunately.. It turns out that Tradingview _does_ actually store the earnings data. It just hides it it. But, it's easy to get it to display that data with Pinescript. Then you can get this data in .csv format by Exporting the Chart Data. The more you know.
+
+Simply write this little snippet into a Pinescript-script and the chart will visually display all days on which there was an earnings report:
 
 ```
 //@version=5

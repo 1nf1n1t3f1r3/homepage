@@ -11,8 +11,9 @@
    ========================================================================== */
 :root {
   /* Dark Canvas Colors */
-  --bg-app: #25252a; /* Total background canvas */
-  --bg-card: #101828; /* Default Card backgrounds */
+  --bg-app: black;
+  --bg-app: #121213;
+  --bg-card: #252424; /* Default Card backgrounds */
   --bg-card-hover: #1c2029; /* Default Card Hover */
 
   /* Odin */
@@ -24,6 +25,11 @@
   --card-mdf: #102287;
   --card-mdf-hover: #1c2029;
   --card-mdf-border: #f9df19;
+
+  /* MDF */
+  --card-trading: #121b20;
+  --card-trading-hover: #1c2029;
+  --card-trading-border: #10b981;
 
   /* Text Scales */
   --text-main: #f3f4f6; /* Bright text for headings */

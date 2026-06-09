@@ -25,13 +25,13 @@ function Header() {
           My Websites
         </Link>
         <Link to="/odin" className={isActive("/odin")}>
-          Odin Projects
+          Odin Websites
         </Link>
         <Link to="/trading" className={isActive("/trading")}>
-          Trading
+          Trading Stories
         </Link>
         <Link to="/unity" className={isActive("/unity")}>
-          Unity Dev
+          Unity Stories
         </Link>
         {/* <Link to="/dnd" className={isActive("/dnd")}>
           D&D

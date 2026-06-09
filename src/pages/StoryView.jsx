@@ -53,12 +53,8 @@ function StoryView() {
   }
 
   return (
-    <main className={styles.storyCanvas}>
+    <main className={styles.fullBleedCanvas}>
       <div className={styles.storyContainer}>
-        <Link to="/trading" className={styles.backBtn}>
-          ← Back to Trading Hub
-        </Link>
-
         <div className={styles.splitLayout}>
           {/* Left Column: The Narrative Chronicle */}
           <section className={styles.narrativeColumn}>
@@ -87,6 +83,9 @@ function StoryView() {
             )}
           </section>
         </div>
+        <Link to="/trading" className={styles.backBtn}>
+          ← Back to Trading Hub
+        </Link>
       </div>
     </main>
   );

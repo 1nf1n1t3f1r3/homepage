@@ -1,5 +1,25 @@
 /* src/pages/StoryView.module.css */
 
+.fullBleedCanvas {
+  width: 100%;
+  position: relative;
+
+  /* 1. The custom tinted backdrop filter unique to this page */
+  background:
+    linear-gradient(
+      transparent 0%,
+      rgba(11, 13, 16, 0.4) 00%,
+      var(--bg-app) 90%
+    ),
+    url("/images/trading_AMCR.png") no-repeat;
+
+  background-size: cover;
+  background-position: left;
+
+  /* 2. Pushes the footer cleanly to the bottom of the screen */
+  min-height: calc(100vh);
+}
+
 .storyCanvas {
   width: 100%;
   min-height: calc(100vh - 80px);
@@ -20,20 +40,18 @@
   text-decoration: none;
   font-size: 0.95rem;
   transition: color 0.2s ease;
+  padding: 15px 15px;
 }
 
 .backBtn:hover {
   color: var(--text-main);
 }
 
-/* ==========================================================================
-   THE BULLETPROOF 50/50 SPLIT ENGINE
-   ========================================================================== */
 .splitLayout {
   display: grid;
-  /* minmax(0, 1fr) cuts off horizontal blowouts by allowing columns to shrink */
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  gap: 40px;
+  /* 1. Shift the balance: Give the story 60% of the space, code 40% */
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 25px;
   align-items: start;
 }
 
@@ -52,13 +70,27 @@
   min-width: 0; /* Defensive CSS: stops massive code strings from pushing the box outward */
 }
 
-/* THE STORY READER SURFACE CARD */
+/* ==========================================================================
+   Story
+   ========================================================================== */
+
 .readingCard {
-  background-color: var(--bg-surface);
-  border: 1px solid var(--border-subtle);
+  background-color: var(--card-trading);
+
+  /* 2. Premium border framing */
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-top: 4px solid var(--card-trading-border);
+  border-bottom: 4px solid var(--card-trading-border);
   border-radius: 16px;
-  padding: 40px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+  padding: 45px;
+
+  box-shadow:
+    0 4px 6px -1px rgba(255, 255, 255, 0.2),
+    0 20px 40px -10px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.05); /* Soft inner glow on the top edge */
+
+  width: 100%;
+  box-sizing: border-box;
 }
 
 /* TYPOGRAPHY OVERRIDES */
@@ -72,7 +104,7 @@
 .readingCard h2,
 .readingCard h3 {
   font-size: 1.4rem;
-  color: #10b981; /* Premium trading terminal green accent line */
+  color: var(--card-trading-border);
   margin-top: 32px;
   margin-bottom: 16px;
   font-weight: 700;
@@ -103,7 +135,7 @@
 }
 
 /* ==========================================================================
-   THE MAIN CODE TERMINAL FRAME LAYOUT
+   Code
    ========================================================================== */
 .codeFrame {
   background-color: #0d1117;
