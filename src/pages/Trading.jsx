@@ -6,16 +6,16 @@ import styles from "./Trading.module.css"; // Bring back the module layout helpe
 
 const tradingProjects = [
   {
-    title: "Abandoned_Earnings_Fetcher",
+    title: "Abandoned Earnings Fetcher",
     subtitle: "Scraping the SEC",
     techStack: ["Python", "Selenium", "Pandas", "BeautifulSoup"],
     description:
-      "A script I wrote to get earnings data directly from the SEC. There's a reason why it's abandoned.",
+      "A script I wrote to get earnings data directly from the SEC and the reason why it's abandoned.",
     slug: "Abandoned_Earnings_Fetcher",
   },
   {
-    title: "Data_Analysis",
-    subtitle: "Data into 3D Charts",
+    title: "Data Analysis",
+    subtitle: "Wrangling Data into 3D Charts",
     techStack: ["Python", "Pandas", "Matplotlib", "KFold", "Seaborn"],
     description:
       "Too many moving parts and too much data lead to a need to analyze it a bit more efficiently",
@@ -25,7 +25,7 @@ const tradingProjects = [
     title: "Pinescript Utilities",
     subtitle: "Handy Stuff for Tradingviewers",
     techStack: ["Pinescript"],
-    description: "A small Repo containing some of my Pinescript Tools",
+    description: "A Repo containing some of my Pinescript Tools",
     slug: "Pinescript_Utilities",
   },
   {
@@ -38,10 +38,19 @@ const tradingProjects = [
   },
   {
     title: "Pine / Python Volume Burst",
-    subtitle: "",
-    techStack: [""],
-    description: "",
-    slug: "",
+    subtitle: "Pine to Python",
+    techStack: ["Pinescript", "Python", "pandas", "numpy", "yfinance"],
+    description:
+      "First, you write it in Pine to see if it looks like it makes sense. Then you decide you need moar data, so you turn to Python.",
+    slug: "Volume_Burst",
+  },
+  {
+    title: "Band Breakout Strategies",
+    subtitle: "Heavy Lifting with Simple Strategies",
+    techStack: ["Python", "Optuna"],
+    description:
+      "First, you write it in Pine to see if it looks like it makes sense. Then you decide you need moar data, so you turn to Python.",
+    slug: "Investing_Strategies",
   },
 ];
 
@@ -54,7 +63,7 @@ function Trading() {
             <h2>Trading Stories</h2>
             <p>A selection of scripts I've written for my trading.</p>
             <p>With accompanying stories as to how they got there.</p>
-            <p>Feel free to give them a read! </p>
+            <p>None of these are intended as stand-alone financial advice!</p>
           </div>
         </div>
 

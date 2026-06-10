@@ -51,7 +51,7 @@ Here's a Screenshot of what the output can look like in a Libreoffice .csv file.
 
 ![SEC Scraper Spreadsheet Output](/images/sec_scraper_output.png)
 
-## Pinescript Bonus
+## Sneaky Pinescript Bonus
 
 Fortunately.. It turns out that Tradingview _does_ actually store the earnings data. It just hides it it. But, it's easy to get it to display that data with Pinescript. Then you can get this data in .csv format by Exporting the Chart Data. The more you know.
 
