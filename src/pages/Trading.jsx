@@ -29,8 +29,16 @@ const tradingProjects = [
     slug: "Pinescript_Utilities",
   },
   {
-    title: "Want More?",
-    subtitle: "Let me know :)",
+    title: "Pinescript FOX",
+    subtitle: "Codifying someone else's strategy",
+    techStack: ["Pinescript"],
+    description:
+      "A script I wrote after I saw a video of a strategy that looked amazing",
+    slug: "FOX",
+  },
+  {
+    title: "Pine / Python Volume Burst",
+    subtitle: "",
     techStack: [""],
     description: "",
     slug: "",
