@@ -1,10 +1,8 @@
 # Pinescript Utilities
 
-[💻 View Full Source Code on GitHub](https://github.com/1nf1n1t3f1r3/Pinescript_Utilities)
+[💻 View 'Minirepo' on GitHub](https://github.com/1nf1n1t3f1r3/Pinescript_Utilities)
 
-A Repo containing some Pinescript Utility Scripts
-
-The orange line is the ATR Stop. The blue labels are the Earnings. You can see at the bottom that Tradingview doesn't mark the first two here yet. The datestamp shows it's 2018 here. The two panels below the main chart are the Mac Spikes and the MACD-V
+A collection of Pinescript Utility Scripts
 
 ## ATR Stop
 

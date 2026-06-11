@@ -45,11 +45,20 @@ function StoryView() {
       />
     ),
     // Ensures any code snippets inside the markdown markdown text column also get tokens applied
-    code: ({ inline, className, children }) => {
+    code: ({ className, children }) => {
       const language = className
         ? className.replace("language-", "")
         : "python";
       return <code className={`language-${language}`}>{children}</code>;
+    },
+
+    // Open Links in new Tabs
+    a: ({ href, children }) => {
+      return (
+        <a href={href} target="_blank" rel="noopener noreferrer">
+          {children}
+        </a>
+      );
     },
   };
 

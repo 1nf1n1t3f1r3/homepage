@@ -6,7 +6,7 @@ import styles from "./Trading.module.css"; // Bring back the module layout helpe
 
 const tradingProjects = [
   {
-    title: "Abandoned Earnings Fetcher",
+    title: "Utilities: Abandoned Earnings Fetcher",
     subtitle: "Scraping the SEC",
     techStack: ["Python", "Selenium", "Pandas", "BeautifulSoup"],
     description:
@@ -14,7 +14,7 @@ const tradingProjects = [
     slug: "Abandoned_Earnings_Fetcher",
   },
   {
-    title: "Data Analysis",
+    title: "Utilities: Data Analysis",
     subtitle: "Wrangling Data into 3D Charts",
     techStack: ["Python", "Pandas", "Matplotlib", "KFold", "Seaborn"],
     description:
@@ -22,14 +22,14 @@ const tradingProjects = [
     slug: "Data_Analysis",
   },
   {
-    title: "Pinescript Utilities",
+    title: "Utilities: Pinescript Tools",
     subtitle: "Handy Stuff for Tradingviewers",
     techStack: ["Pinescript"],
-    description: "A Repo containing some of my Pinescript Tools",
+    description: "A Minirepo containing some of my Pinescript Tools",
     slug: "Pinescript_Utilities",
   },
   {
-    title: "Pinescript FOX",
+    title: "Strategy: Pinescript FOX",
     subtitle: "Codifying someone else's strategy",
     techStack: ["Pinescript"],
     description:
@@ -37,7 +37,7 @@ const tradingProjects = [
     slug: "FOX",
   },
   {
-    title: "Pine / Python Volume Burst",
+    title: "Strategy: Pine / Python Volume Burst",
     subtitle: "Pine to Python",
     techStack: ["Pinescript", "Python", "pandas", "numpy", "yfinance"],
     description:
@@ -45,11 +45,10 @@ const tradingProjects = [
     slug: "Volume_Burst",
   },
   {
-    title: "Band Breakout Strategies",
+    title: "Strategy: Band Breakout Strategies",
     subtitle: "Heavy Lifting with Simple Strategies",
     techStack: ["Python", "Optuna"],
-    description:
-      "First, you write it in Pine to see if it looks like it makes sense. Then you decide you need moar data, so you turn to Python.",
+    description: "",
     slug: "Investing_Strategies",
   },
 ];
