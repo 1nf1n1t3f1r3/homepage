@@ -1,5 +1,5 @@
 // src/pages/StoryView.jsx
-import { useState, useEffect } from "react"; // Added useEffect to trigger syntax highlighting pass
+import { useState, useEffect, useLayoutEffect } from "react"; // Added useEffect to trigger syntax highlighting pass
 import { useParams, Link } from "react-router-dom";
 import ReactMarkdown from "react-markdown";
 import styles from "./StoryView.module.css";
@@ -26,6 +26,10 @@ function StoryView() {
 
   const markdownContent = mdModules[mdPath]?.default || null;
   const codeContent = codeModules[codePath]?.default || null;
+
+  useLayoutEffect(() => {
+    window.scrollTo(0, 0);
+  }, [storyId]); // Fires instantly the second the storyId changes
 
   // 2. Tell Prism to run through the DOM and color the code tags right after paint frames
   useEffect(() => {
@@ -62,12 +66,11 @@ function StoryView() {
     },
   };
 
-  if (!markdownContent) {
+  if (!markdownContent || (codeContent && !codeModules[codePath])) {
     return (
-      <div className="pageContainer">
-        <h2>Story not found</h2>
-        <Link to="/trading">← Back to Trading Hub</Link>
-      </div>
+      <main className={styles.fullBleedCanvas} style={{ minHeight: "100vh" }}>
+        {/* Completely empty, stable dark canvas. No text, no headers, zero jumping possible */}
+      </main>
     );
   }
 

@@ -17,7 +17,7 @@
   background-position: center;
 
   /* 2. Pushes the footer cleanly to the bottom of the screen */
-  min-height: calc(100vh - 160px);
+  min-height: 100vh;
 }
 
 .tradingCardTheme {

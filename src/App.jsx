@@ -2,6 +2,7 @@
 
 import React from "react";
 import { Routes, Route } from "react-router-dom";
+import ScrollToTop from "./components/ScrollToTop"; // 1. Import the utility component
 import Header from "./components/Header";
 import MyWebsites from "./pages/MyWebsites";
 import OdinHub from "./pages/OdinHub";
@@ -49,6 +50,9 @@ const DnD = () => (
 function App() {
   return (
     <div className="app-container">
+      {/* Prevent Scrolling Issues */}
+      {/* <ScrollToTop /> */}
+
       {/* The header stays visible on every single page */}
       <Header />
 

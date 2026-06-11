@@ -17,7 +17,7 @@
   background-position: left;
 
   /* 2. Pushes the footer cleanly to the bottom of the screen */
-  min-height: calc(100vh);
+  min-height: 100vh;
 }
 
 /* Page Outer Structure */
@@ -119,9 +119,11 @@
   overflow-x: auto; /* Allows horizontal scrolling inside the text flow box */
   border: 1px solid var(--border-subtle);
   margin: 24px 0;
+  overflow-x: auto; /* Reserves the horizontal scroll track instantly */
 }
 
 .readingCard code {
+  white-space: pre;
   font-family: "Courier New", Courier, monospace;
   font-size: 0.9rem;
   color: #e6edf3;
@@ -151,6 +153,10 @@
 /* ==========================================================================
    Code
    ========================================================================== */
+.codeFrame pre {
+  overflow-x: auto; /* Forces it into a single line scroll area */
+}
+
 .codeFrame {
   background-color: #0d1117;
   border: 1px solid var(--border-subtle);
@@ -160,6 +166,10 @@
   display: flex;
   flex-direction: column;
   height: 100%; /* Spans the maximum constraints of the codeColumn parent container */
+
+  aspect-ratio: 4 / 16;
+  background-color: #161b22;
+  object-fit: cover;
 }
 
 /* File name tab row bar over the terminal */
@@ -170,6 +180,12 @@
   font-family: monospace;
   font-size: 0.85rem;
   color: var(--text-muted);
+}
+
+.languagePython {
+  aspect-ratio: 4 / 161;
+  background-color: #161b22;
+  object-fit: cover;
 }
 
 /* ==========================================================================
@@ -285,6 +301,12 @@
 
 .zoomableMarkdownImg {
   width: 100%;
+
+  /* Reserve a responsive widescreen box before the file downloads */
+  aspect-ratio: 16 / 10;
+  background-color: #161b22; /* Optional: Clean dark placeholder tile while loading */
+  object-fit: cover; /* Ensures the image fits perfectly inside its reserved box */
+
   border-radius: 8px;
   border: 1px solid var(--border-subtle);
   cursor: zoom-in;

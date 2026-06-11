@@ -1,3 +1,5 @@
+/* src/index.css */
+
 @font-face {
   font-family: "Norsebold";
   src: url("./assets/fonts/Norsebold.otf") format("opentype");
@@ -106,6 +108,11 @@ svg {
    3. UNIFIED FRAMEWORK (Shared Page Components)
    ========================================================================== */
 
+/* src/index.css or your global layout file */
+html {
+  scrollbar-gutter: stable;
+}
+
 /* Page Outer Structure */
 .gridContainer {
   max-width: 1200px;
@@ -121,7 +128,7 @@ svg {
   /* Layout: Center the block horizontally within the 1200px container */
   margin-left: auto;
   margin-right: auto;
-  width: max-content;
+  width: 600px;
   max-width: 100%;
 
   /* Background Colour & Borders */

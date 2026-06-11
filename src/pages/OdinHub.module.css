@@ -17,7 +17,14 @@
   background-position: left;
 
   /* 2. Pushes the footer cleanly to the bottom of the screen */
-  min-height: calc(100vh - 160px);
+  min-height: 100vh;
+}
+
+.img {
+  /* Reserve a responsive widescreen box before the file downloads */
+  aspect-ratio: 16 / 10;
+  background-color: #161b22; /* Optional: Clean dark placeholder tile while loading */
+  object-fit: cover; /* Ensures the image fits perfectly inside its reserved box */
 }
 
 /* CUSTOM ACCENT OVERRIDES FOR THE BANNER */
