@@ -6,17 +6,33 @@ import styles from "./Trading.module.css"; // Bring back the module layout helpe
 
 const tradingProjects = [
   {
-    title: "Utilities: Abandoned Earnings Fetcher",
-    subtitle: "Scraping the SEC",
-    techStack: ["Python", "Selenium", "Pandas", "BeautifulSoup"],
+    title: "Strategy: Band Breakout Strategies",
+    subtitle: "Heavy Lifting with Simple Strategies",
+    techStack: ["Python", "pandas", "numpy", "yfinance"],
     description:
-      "A script I wrote to get earnings data directly from the SEC and the reason why it's abandoned.",
-    slug: "Abandoned_Earnings_Fetcher",
+      "Simple Long-Term Investing Stratgies with Bollingers and/or Keltners",
+    slug: "Band_Breakout_Strategies",
+  },
+  {
+    title: "Strategy: Pine / Python Volume Burst",
+    subtitle: "Pine to Python",
+    techStack: ["Pinescript", "Python", "pandas", "numpy", "yfinance"],
+    description:
+      "First, you write it in Pine to see if it looks like it makes sense. Then you decide you need moar data, so you turn to Python.",
+    slug: "Volume_Burst",
+  },
+  {
+    title: "Strategy: Pinescript FOX",
+    subtitle: "Codifying someone else's strategy",
+    techStack: ["Pinescript"],
+    description:
+      "A script I wrote after I saw a video of a strategy that looked amazing",
+    slug: "FOX",
   },
   {
     title: "Utilities: Data Analysis",
     subtitle: "Wrangling Data into 3D Charts",
-    techStack: ["Python", "Pandas", "Matplotlib", "KFold", "Seaborn"],
+    techStack: ["Python", "pandas", "Matplotlib", "KFold", "Seaborn"],
     description:
       "Too many moving parts and too much data lead to a need to analyze it a bit more efficiently",
     slug: "Data_Analysis",
@@ -29,27 +45,12 @@ const tradingProjects = [
     slug: "Pinescript_Utilities",
   },
   {
-    title: "Strategy: Pinescript FOX",
-    subtitle: "Codifying someone else's strategy",
-    techStack: ["Pinescript"],
+    title: "Utilities: Abandoned Earnings Fetcher",
+    subtitle: "Scraping the SEC",
+    techStack: ["Python", "Selenium", "pandas", "BeautifulSoup"],
     description:
-      "A script I wrote after I saw a video of a strategy that looked amazing",
-    slug: "FOX",
-  },
-  {
-    title: "Strategy: Pine / Python Volume Burst",
-    subtitle: "Pine to Python",
-    techStack: ["Pinescript", "Python", "pandas", "numpy", "yfinance"],
-    description:
-      "First, you write it in Pine to see if it looks like it makes sense. Then you decide you need moar data, so you turn to Python.",
-    slug: "Volume_Burst",
-  },
-  {
-    title: "Strategy: Band Breakout Strategies",
-    subtitle: "Heavy Lifting with Simple Strategies",
-    techStack: ["Python", "Optuna"],
-    description: "",
-    slug: "Investing_Strategies",
+      "A script I wrote to get earnings data directly from the SEC and the reason why it's abandoned.",
+    slug: "Abandoned_Earnings_Fetcher",
   },
 ];
 
