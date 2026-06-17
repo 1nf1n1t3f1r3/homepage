@@ -4,18 +4,19 @@ import React from "react";
 import { Routes, Route } from "react-router-dom";
 import ScrollToTop from "./components/ScrollToTop"; // 1. Import the utility component
 import Header from "./components/Header";
+import Home from "./pages/Home";
 import MyWebsites from "./pages/MyWebsites";
 import OdinHub from "./pages/OdinHub";
 import Trading from "./pages/Trading";
 import StoryView from "./pages/StoryView"; // The single template page
 
 // Tiny placeholder components for your pages (you can move these to separate files later!)
-const Home = () => (
-  <main className="page-content">
-    <h2>Resume & About Me</h2>
-    <p>Welcome to my portfolio...</p>
-  </main>
-);
+// const Home = () => (
+//   <main className="page-content">
+//     <h2>Resume & About Me</h2>
+//     <p>Welcome to my portfolio...</p>
+//   </main>
+// );
 // const OdinHubLink = () => (
 //   <main className="page-content">
 //     <h2>Odin Projects</h2>
@@ -32,12 +33,6 @@ const UnityDev = () => (
   <main className="page-content">
     <h2>Unity & The Networking Wheel</h2>
     <p>The story of how I tried to rewrite multiplayer sync from scratch...</p>
-  </main>
-);
-const DnD = () => (
-  <main className="page-content">
-    <h2>D&D Worldbuilding Tools</h2>
-    <p>I'm a bit tired of having to come up with loot every dungeon</p>
   </main>
 );
 // const MasqueDeFer = () => (
