@@ -7,6 +7,17 @@ import styles from "./MyWebsites.module.css"; // Bring back the module layout he
 
 const websiteProjects = [
   {
+    title: "Janus de Vries Personal Website",
+    subtitle: "You are Here!",
+    techStack: ["React"],
+    description:
+      "The Personal Portfolio Website you're currently looking at. It's built with React, Vite and ProjectCard code that probably should be turned into components.",
+    liveUrl: "https://janusdevries.nl",
+    githubUrl: "https://github.com/1nf1n1t3f1r3/homepage",
+    repo: "1nf1n1t3f1r3/homepage",
+    image: "",
+  },
+  {
     title: "Masque de Fer Fencing Club Website",
     subtitle: "Plain HTML Website",
     techStack: ["HTML", "CSS", "Javascript"],
@@ -18,14 +29,16 @@ const websiteProjects = [
     image: "/images/masque_de_fer-preview.png",
   },
   {
-    title: "TTRPG Tools",
-    subtitle: "Work in Progress",
-    techStack: [""],
-    description: "",
-    liveUrl: "",
-    githubUrl: "",
-    repo: "",
-    image: "",
+    title: "Lich of Leilon Campaign",
+    subtitle: "My D&D Campaign",
+    techStack: ["Obsidian", "Quartz"],
+    description:
+      "Player-Facing Wiki-like website for my D&D Campaign. Very nerdy, and I have to admit that Quartz *mostly* just works, but it's still cool. The Github Repo for this is Private, because one of the Party Members is a sneaky Rogue who might otherwise steal my secrets. That being said, feel free to try the Readme button anyway!",
+    liveUrl: "https://lichofleilon.blackrider.quest/the-lich-of-leilon",
+    githubUrl: "https://github.com/1nf1n1t3f1r3/Quartz-Lich",
+    repo: "1nf1n1t3f1r3/Quartz-Lich",
+    localReadme: "../content/Lich_of_Leilon.md",
+    image: "/images/LOL_index.png",
   },
 ];
 
@@ -106,6 +119,7 @@ function MyWebsites() {
         key={activeProject?.repo || "empty"}
         isOpen={!!activeProject}
         repo={activeProject?.repo}
+        localReadme={activeProject?.localReadme}
         projectImage={activeProject?.image}
         onClose={() => setActiveProject(null)}
       />

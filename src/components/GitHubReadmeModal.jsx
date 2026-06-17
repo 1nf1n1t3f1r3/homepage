@@ -5,13 +5,32 @@ import Markdown from "react-markdown";
 import rehypeRaw from "rehype-raw";
 import "./GitHubReadmeModal.css";
 
-function ReadmeModal({ repo, isOpen, onClose, projectImage }) {
+// 1. Eagerly load local website markdown documents using Vite glob loaders
+const localWebsiteFiles = import.meta.glob("../content/*.md", {
+  query: "?raw",
+  eager: true,
+});
+
+function ReadmeModal({ repo, isOpen, onClose, projectImage, localReadme }) {
   const [markdown, setMarkdown] = useState("");
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
 
   useEffect(() => {
     if (!isOpen) return;
+
+    if (localReadme) {
+      const localString = localWebsiteFiles[localReadme]?.default;
+
+      if (localString) {
+        setMarkdown(localString);
+        setLoading(false);
+      } else {
+        setError(true);
+        setLoading(false);
+      }
+      return; // Exit early! No network call needed.
+    }
 
     // Fetch the README using the public GitHub API
     fetch(`https://api.github.com/repos/${repo}/readme`, {
@@ -30,7 +49,7 @@ function ReadmeModal({ repo, isOpen, onClose, projectImage }) {
         setError(true);
         setLoading(false);
       });
-  }, [repo, isOpen]);
+  }, [repo, isOpen, localReadme]);
 
   if (!isOpen) return null;
 

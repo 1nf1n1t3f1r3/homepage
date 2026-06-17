@@ -6,13 +6,13 @@ This is a script I wrote in order to find earnings dates. I couldn't find them c
 
 When trading stocks, you invariably run into the issue of Earnings Reports being released when you're interested in a trade. The question is, how do you handle those? The risk with these is that the company might report something that's unexpected, in which case the stock might respond with extreme volatility. This can, of course, be in your favour, but it also could go against you, where you enter a position, earnings are released overnight, and the stock is now trading far beyond your Stop Loss (Where you wanted to exit the trade, if it didn't go your way), leading to a bigger-than-expected loss.
 
-## The Solution?
+### How to handle Earnings
 
 Well, there's two ways to handle these reports. The first is that you simply ignore them (or don't know they exist at all), and you enter or maintain a position in front of earnings. The argument in favour of this approach is that, there's a reason the setup looks good. Earnings are likely to lead to a more volatile outcome, which means, if the trade is already good anyway, then a more volatile outcome, where the outcome is more likely than not to be in your favour, just means bigger profits! The second approach is that you close your position before earnings are released, or don't enter one at all, if earnings are coming up soon. The reason is simple; if you're a serious trader, carefully weighing risks and balancing trades so that individual wins and losses don't have an outsized effect on the bottom line, why risk that by playing Report Roulette?
 
 ## Scraping Script
 
-In order to decide which approach is better, we would first need to know when these earnings reports were actually dropped. Then look at our live and/or backtested trades in order to see if there's a skew in any direction. Data on earnings isn't always too easy to come by in a clean format (at least, that's what I thought, more on that later). However, they all need to share that information with the SEC, so... That's where we'll find it for sure! Then we just need to go and get it, right? That brings us to the scraping.
+In order to decide which approach is better, we would first need to know when these earnings reports were actually dropped. Then look at our live and/or backtested trades in order to see if there's a skew in any direction. Data on earnings isn't always too easy to come by in a clean format (at least, that's what I thought, more on that later). However, they all need to share that information with the SEC, so... That's where we'll find it for sure! Then we just need to go and get it. That brings us to the scraping.
 
 ### Setup
 
@@ -36,11 +36,11 @@ This is the bit that actually extracts the text that is about the reporting date
 
 The sanity checking step is there to drop duplicate reports. If there's an issue with it the ticker gets flagged as potentially unreliable.
 
-### Conclusion
+## Conclusion
 
-In a way, it wasn't that bad. Overall, it did get most of them right. However, what's the point of working with faulty data at all? Trading is hard and there's no point in building on shaky foundations that aren't trustworthy. That's the point where this had to be thrown out. Still... It is very funny to see it in action. I hope that's not just me.
+In a way, it wasn't that bad. Overall, it did get most of them right. However, what's the point of working with potentially faulty data at all? Trading is hard and there's no point in building on shaky foundations that aren't trustworthy. That's the point where this had to be thrown out. Still... It is very funny to see it in action. I hope that's not just me.
 
-#### Video
+#### GIF Demonstration
 
 ![Terminal Script Execution Loop](/images/sec_scraper_demo.gif)
 SEC Scraper goes BRRRR
