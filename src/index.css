@@ -8,9 +8,7 @@
   font-display: swap; /* Tells the browser to show text immediately using a fallback font while downloading Norsebold */
 }
 
-/* ==========================================================================
-   1. THE DESIGN VAULT (Variables)
-   ========================================================================== */
+/* Variables */
 :root {
   /* Dark Canvas Colors */
   --bg-app: black;
@@ -47,11 +45,10 @@
   --accent-odin: #3b82f6; /* Blue */
   --accent-trading: #10b981; /* Emerald Green */
   --accent-unity: #ec4899; /* Pink/Purple */
+  --accent-main: #10b981;
 }
 
-/* ==========================================================================
-   2. MODERN LAYOUT RESET
-   ========================================================================== */
+/* CSS Reset */
 *,
 *::before,
 *::after {
@@ -104,11 +101,7 @@ svg {
   display: block;
 }
 
-/* ==========================================================================
-   3. UNIFIED FRAMEWORK (Shared Page Components)
-   ========================================================================== */
-
-/* src/index.css or your global layout file */
+/* Shared Page Components */
 html {
   scrollbar-gutter: stable;
 }
@@ -174,9 +167,7 @@ html {
   gap: 30px;
 }
 
-/* ==========================================================================
-   4. CARD COMPONENTS
-   ========================================================================== */
+/* Card Components */
 .projectCard {
   background: var(--card-bg-override, var(--bg-card));
   border: 1px solid var(--card-border-override, var(--border-white));
@@ -205,7 +196,7 @@ html {
 
 .projectSubtitle {
   font-size: 0.9rem;
-  color: var(--accent-odin); /* Hooked up to the sandbox theme variables */
+  color: var(--accent-odin);
   font-weight: 600;
   display: block;
   margin-bottom: 15px;
@@ -217,6 +208,8 @@ html {
   flex-wrap: wrap;
   gap: 8px;
   margin-bottom: 15px;
+  margin-left: 5px;
+  margin-right: 5px;
 }
 
 .techBadge {
@@ -233,11 +226,11 @@ html {
   font-size: 0.95rem;
   line-height: 1.5;
   margin: 0 0 20px 0;
-  flex-grow: 1; /* Automatically keeps card boundaries uniform */
+  flex-grow: 1;
 }
 
 .freeTierWarning {
-  background: #2c2514; /* Warm dark mode notification palette */
+  background: #2c2514;
   border: 1px solid #66541e;
   color: #ffe066;
   padding: 10px;
@@ -247,9 +240,7 @@ html {
   line-height: 1.4;
 }
 
-/* ==========================================================================
-   5. INTERACTIVE COMPONENT BUTTONS
-   ========================================================================== */
+/* Buttons */
 .cardActions {
   display: flex;
   gap: 12px;
@@ -268,7 +259,7 @@ html {
 }
 
 .btnPrimary {
-  background: var(--text-main); /* High contrast action button */
+  background: var(--text-main);
   color: var(--bg-app);
 }
 

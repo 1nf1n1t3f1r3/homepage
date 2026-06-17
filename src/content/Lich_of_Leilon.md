@@ -14,6 +14,8 @@ For putting it online, there's a couple of options. Quartz is both the free and 
 
 When Deploying with Vercel, I found a bug I couldn't solve.
 
+### Error!
+
 ✘ [ERROR] No matching export in ".quartz/plugins/index.ts" for import "CustomOgImagesEmitterName"
 quartz/components/Head.tsx:7:9:
 7 │ import { CustomOgImagesEmitterName } from "../../.quartz/plugins"
@@ -23,6 +25,6 @@ Reason: Build failed with 1 error:
 quartz/components/Head.tsx:7:9: ERROR: No matching export in ".quartz/plugins/index.ts" for import "CustomOgImagesEmitterName"
 Error: Command "npx quartz plugin install && npx quartz build" exited with 1
 
-I spent way too much time on trying to figure out the right fix. Long story short, eventually, I realized that the first build did, at least, Deploy, so I Redeployed that one, which Deployed again. I didn't immediately realize it was always going to remain stuck on that Redeployed version while I was tinkering with the code, so that didn't help the investigation. When I Redeployed another fix attempt later, it struck me that nothing in the actual code or config was the solution; the fix was the _actual Redeploying_. After updating the linked repo, Vercel's deploy always fails, but if you then Redeploy it straight away, it works. So, I tossed out the garbled mess that was the original repo at that point, made a new one, did all the basic steps again, deployed, changed the settings I wanted, redeployed, and done.
+### Fix?
 
-What's actually 'causing' that stupid bug, though, I don't know. Sometimes you just roll with it.
+I spent way too much time on trying to figure out the right fix. Long story short, eventually, I realized that the first build did, at least, Deploy, so I Redeployed that one, which Deployed again. I didn't immediately realize it was always going to remain stuck on that Redeployed version while I was tinkering with the code, so that didn't help the investigation. When I Redeployed another fix attempt later, it struck me that nothing in the actual code or config was the solution; the fix was the _actual Redeploying_. After updating the linked repo, Vercel's deploy always fails, but if you then Redeploy it straight away, it works. So, I tossed out the garbled mess that was the original repo at that point, made a new one, did all the basic steps again, deployed, changed the settings I wanted, redeployed, and... done?

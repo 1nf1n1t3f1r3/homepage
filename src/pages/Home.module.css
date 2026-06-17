@@ -1,5 +1,38 @@
 /* src/pages/Home.module.css */
 
+/* src/pages/Home.module.css */
+
+.heroGreetingBlock {
+  text-align: center;
+  max-width: 800px;
+  margin: 60px auto 40px auto; /* Centered layout with strong vertical margins */
+  padding: 0 20px;
+}
+
+.heroGreetingBlock h1 {
+  font-size: 2.8rem;
+  color: var(--text-main);
+  margin-bottom: 16px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.heroSubheading {
+  font-size: 1.35rem;
+  color: var(--accent-main);
+  font-weight: 500;
+  line-height: 1.4;
+  margin-bottom: 12px;
+}
+
+.heroStatusText {
+  font-size: 1.05rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  max-width: 680px;
+  margin: 0 auto;
+}
+
 .resumeLayout {
   display: grid;
   grid-template-columns: 1fr 2fr; /* Clean asymmetrical layout split */
@@ -16,8 +49,8 @@
 .profileSection,
 .stackSection,
 .chronicleCard {
-  background: #252424; /* Matches your --bg-card token */
-  border: 1px solid #6d737e; /* Matches your --border-white token */
+  background: var(--bg-card); /* Matches your --bg-card token */
+  border: 1px solid var(--border-white); /* Matches your --border-white token */
   border-radius: 12px;
   padding: 30px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
@@ -73,18 +106,15 @@
   font-size: 0.95rem;
 }
 
-/* src/pages/Home.module.css */
-
-.portalSection {
+.projectsGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 24px;
-  margin-top: 20px;
-  margin-bottom: 20px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  margin-bottom: 60px;
 }
 
-.portalSection > div:last-child {
-  grid-column: 1 / -1;
+.projectsGrid > :last-child:nth-child(3n + 1) {
+  grid-column: 2;
 }
 
 .sectionTitle {
@@ -102,10 +132,97 @@
   margin: 40px 0;
 }
 
-/* 🚀 MOBILE ADAPTATION SAFETY BOX */
+/* CV */
+
+.cvHeaderBlock {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid var(--border-subtle);
+  padding-bottom: 12px;
+  margin-bottom: 25px;
+}
+
+.cvHeaderBlock h3 {
+  margin: 0;
+  border: none;
+  padding: 0;
+}
+
+.cvSection {
+  margin-bottom: 30px;
+}
+
+.cvSection:last-child {
+  margin-bottom: 0;
+}
+
+.cvSectionTitle {
+  font-size: 1.2rem;
+  color: var(--accent-main);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 15px;
+}
+
+.cvItem {
+  margin-bottom: 20px;
+}
+
+.cvItemHeader {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.05rem;
+  color: var(--text-main);
+}
+
+.cvCompany {
+  display: block;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  font-style: italic;
+  margin-bottom: 6px;
+}
+
+.cvDate {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.cvBulletList {
+  margin: 0;
+  padding-left: 20px;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.cvBulletList li {
+  margin-bottom: 4px;
+}
+
+.contactList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.contactList li {
+  margin-bottom: 4px;
+}
+
+.techBadgeContainer {
+  display: grid;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding-top: 8px;
+}
+
+/*  MOBILE ADAPTATION SAFETY BOX */
 @media (max-width: 768px) {
   .resumeLayout {
-    grid-template-columns: 1fr; /* Stacks column layers elegantly into a single column line on phones */
+    grid-template-columns: 1fr;
     gap: 20px;
   }
 }
