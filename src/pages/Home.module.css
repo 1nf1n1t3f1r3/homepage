@@ -73,6 +73,35 @@
   font-size: 0.95rem;
 }
 
+/* src/pages/Home.module.css */
+
+.portalSection {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 24px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.portalSection > div:last-child {
+  grid-column: 1 / -1;
+}
+
+.sectionTitle {
+  font-size: 1.6rem;
+  margin-bottom: 20px;
+  text-align: center;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.divider {
+  border: 0;
+  height: 1px;
+  background: var(--border-subtle);
+  margin: 40px 0;
+}
+
 /* 🚀 MOBILE ADAPTATION SAFETY BOX */
 @media (max-width: 768px) {
   .resumeLayout {
