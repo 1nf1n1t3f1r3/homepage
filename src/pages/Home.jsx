@@ -154,10 +154,10 @@ function Home() {
               <h3>Elevator Pitch</h3>
               <p className={styles.bioText}>
                 I build clean web interfaces, trading scripts and Unity
-                projects. I deploy single-page applications or set up
-                programmatic scraping pipelines. I like solving hard problems
-                and copy-pasting the same code block in three different places
-                in equal measure.
+                projects. Whether it's deploying single-page applications or
+                setting up programmatic scraping pipelines, I like solving hard
+                problems and lazily copy-pasting the same code block in three
+                different places in equal measure.
               </p>
             </div>
 

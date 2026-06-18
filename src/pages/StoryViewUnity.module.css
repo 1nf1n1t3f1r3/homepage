@@ -1,0 +1,395 @@
+/* src/pages/StoryViewUnity.module.css */
+
+.fullBleedCanvas {
+  width: 100%;
+  position: relative;
+
+  /* 1. The custom tinted backdrop filter unique to this page */
+  background:
+    linear-gradient(
+      transparent 0%,
+      rgba(11, 13, 16, 0.4) 00%,
+      var(--bg-app) 90%
+    ),
+    url("/images/mdf_image005_upscaled.png") no-repeat;
+
+  background-size: cover;
+  background-position: left;
+
+  /* 2. Pushes the footer cleanly to the bottom of the screen */
+  min-height: 100vh;
+}
+
+/* Page Outer Structure */
+.storyContainer {
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.backBtn {
+  display: inline-block;
+  margin-bottom: 24px;
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: color 0.2s ease;
+  padding: 15px 15px;
+}
+
+.backBtn:hover {
+  color: var(--text-main);
+}
+
+.splitLayout {
+  display: grid;
+  /* 1. Shift the balance: Give the story 60% of the space, code 40% */
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 25px;
+  align-items: start;
+}
+
+/* 1. Left Grid Child Wrapper */
+.narrativeColumn {
+  min-width: 0; /* Defensive CSS: forces content to wrap inside the 50% boundary */
+}
+
+/* 2. Right Grid Child Wrapper (Sticky Container) */
+.codeColumn {
+  position: sticky;
+  top: 100px; /* Pins beautifully right underneath your sticky navbar line */
+  max-height: calc(100vh - 140px); /* Restricts box sizing to screen boundary */
+  display: flex;
+  flex-direction: column;
+  min-width: 0; /* Defensive CSS: stops massive code strings from pushing the box outward */
+}
+
+/* ==========================================================================
+   Story
+   ========================================================================== */
+
+.readingCard {
+  background-color: var(--card-trading);
+
+  /* 2. Premium border framing */
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-top: 4px solid var(--card-trading-border);
+  border-bottom: 4px solid var(--card-trading-border);
+  border-radius: 16px;
+  padding: 45px;
+
+  box-shadow:
+    0 4px 6px -1px rgba(255, 255, 255, 0.2),
+    0 20px 40px -10px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.05); /* Soft inner glow on the top edge */
+
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* TYPOGRAPHY OVERRIDES */
+.readingCard h1 {
+  font-size: 2.4rem;
+  color: var(--text-main);
+  margin-bottom: 8px;
+  font-weight: 800;
+}
+
+.readingCard h2,
+.readingCard h3 {
+  font-size: 1.4rem;
+  color: var(--card-trading-border);
+  margin-top: 32px;
+  margin-bottom: 16px;
+  font-weight: 700;
+}
+
+.readingCard p {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: #c9d1d9;
+  margin-bottom: 20px;
+}
+
+/* INLINE CODE BLOCK WRAPPING (Inside the markdown text column) */
+.readingCard pre {
+  background-color: #0d1117;
+  padding: 20px;
+  border-radius: 8px;
+  overflow-x: auto; /* Allows horizontal scrolling inside the text flow box */
+  border: 1px solid var(--border-subtle);
+  margin: 24px 0;
+  overflow-x: auto; /* Reserves the horizontal scroll track instantly */
+}
+
+.readingCard code {
+  white-space: pre;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 0.9rem;
+  color: #e6edf3;
+  line-height: 1.5;
+}
+
+/* Lists */
+.readingCard ul,
+.readingCard ol {
+  margin-top: 0;
+  margin-bottom: 24px; /* Matches paragraph margins to provide consistent structural whitespace */
+  padding-left: 24px; /* Pushes list points inwards cleanly */
+}
+
+.readingCard li {
+  font-size: 1.05rem;
+  line-height: 1.7; /* Gives list items the same high-end layout room as text strings */
+  color: #c9d1d9;
+  margin-bottom: 8px; /* Adds space between individual bullet items */
+}
+
+/* Ensure strong emphasis elements inside lists look robust */
+.readingCard li strong {
+  color: var(--text-main);
+}
+
+/* ==========================================================================
+   Code
+   ========================================================================== */
+.codeFrame pre {
+  overflow-x: auto; /* Forces it into a single line scroll area */
+}
+
+.codeFrame {
+  background-color: #0d1117;
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  height: 100%; /* Spans the maximum constraints of the codeColumn parent container */
+
+  aspect-ratio: 4 / 16;
+  background-color: #161b22;
+  object-fit: cover;
+}
+
+/* File name tab row bar over the terminal */
+.codeFrameHeader {
+  background-color: #161b22;
+  padding: 10px 20px;
+  border-bottom: 1px solid var(--border-subtle);
+  font-family: monospace;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.languagePython {
+  aspect-ratio: 4 / 161;
+  background-color: #161b22;
+  object-fit: cover;
+}
+
+/* ==========================================================================
+   PRISM VANILLA SYNTAX HIGHLIGHTING TOKENS
+   ========================================================================== */
+
+/* 1. Clear out default margins/padding that pre tags sometimes inherit */
+.codeFrame pre {
+  margin: 0;
+  padding: 24px;
+  background-color: #0d1117; /* Forces your beautiful dark background back */
+  overflow-y: auto;
+  overflow-x: auto;
+  flex-grow: 1;
+}
+
+.codeFrame code {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: #e6edf3; /* Default text color (variables, plain text) */
+}
+
+/* 2. VSCode Theme Color Tokens mapping */
+.codeFrame :global(.token.comment),
+.codeFrame :global(.token.prolog),
+.codeFrame :global(.token.doctype),
+.codeFrame :global(.token.cdata) {
+  color: #8b949e; /* Muted code comment gray */
+  font-style: italic;
+}
+
+.codeFrame :global(.token.keyword) {
+  color: #ff7b72; /* VSCode Salmon Red (import, def, return, for, in) */
+  font-weight: 600;
+}
+
+.codeFrame :global(.token.string),
+.codeFrame :global(.token.char) {
+  color: #a5d6ff; /* VSCode Soft Blue (Strings, file paths, parameters) */
+}
+
+.codeFrame :global(.token.function),
+.codeFrame :global(.token.class-name) {
+  color: #d2a8ff; /* VSCode Royal Purple (Functions, method calls) */
+}
+
+.codeFrame :global(.token.number),
+.codeFrame :global(.token.boolean) {
+  color: #ff9b5e; /* VSCode Neon Orange (Numbers, True, False, None) */
+}
+
+.codeFrame :global(.token.operator),
+.codeFrame :global(.token.entity),
+.codeFrame :global(.token.url) {
+  color: #ff7b72; /* Operators (=, +, -, ==) */
+}
+
+.codeFrame :global(.token.property),
+.codeFrame :global(.token.tag),
+.codeFrame :global(.token.constant) {
+  color: #79c0ff; /* Constants and variables */
+}
+
+/* Custom Scrollbar skinning for your scrollable pre block */
+.codeFrame pre::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.codeFrame pre::-webkit-scrollbar-track {
+  background: #0d1117;
+}
+
+.codeFrame pre::-webkit-scrollbar-thumb {
+  background: #21262d;
+  border-radius: 4px;
+}
+
+.codeFrame pre::-webkit-scrollbar-thumb:hover {
+  background: #30363d;
+}
+
+/* BUTTON CONVERSIONS FOR MARKDOWN LINKS */
+.readingCard a {
+  display: inline-block;
+  background-color: var(--text-main);
+  color: var(--bg-app);
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-weight: 600;
+  text-decoration: none;
+  margin-top: 15px;
+  transition: opacity 0.2s ease;
+}
+
+.readingCard a:hover {
+  opacity: 0.9;
+}
+
+/* Images */
+.readingCard img {
+  width: 100%;
+  border-radius: 8px;
+  border: 1px solid var(--border-subtle);
+  cursor: zoom-in;
+  transition: transform 0.2s ease;
+}
+
+.readingCard img:hover {
+  transform: scale(1.02); /* Subtle pop on hover to show it's interactable */
+}
+
+.zoomableMarkdownImg {
+  width: 100%;
+
+  /* Reserve a responsive widescreen box before the file downloads */
+  aspect-ratio: 16 / 10;
+  background-color: #161b22; /* Optional: Clean dark placeholder tile while loading */
+  object-fit: cover; /* Ensures the image fits perfectly inside its reserved box */
+
+  border-radius: 8px;
+  border: 1px solid var(--border-subtle);
+  cursor: zoom-in;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+  margin: 16px 0;
+}
+
+.zoomableMarkdownImg:hover {
+  transform: scale(1.015);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+}
+
+/* The Full-Screen Black Translucent Frame Backdrop */
+.lightboxOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(
+    10,
+    12,
+    16,
+    0.95
+  ); /* Deep dark cinematic tint overlay mask */
+  z-index: 9999; /* Ensures it mounts over any sticky headers or code columns */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: zoom-out;
+  animation: fadeInEffect 0.2s ease-out;
+}
+
+/* The Center Stage Image */
+.lightboxActiveStage {
+  max-width: 90%;
+  max-height: 80vh;
+  object-fit: contain; /* Keeps spreadsheet aspect ratio perfect without warping layout stretch */
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+  cursor: default;
+}
+
+/* Close button corner positioning mark indicator */
+.lightboxCloseBtn {
+  position: absolute;
+  top: 30px;
+  right: 40px;
+  color: #fff;
+  font-size: 2.5rem;
+  font-weight: 300;
+  cursor: pointer;
+  opacity: 0.6;
+  transition: opacity 0.15s ease;
+}
+
+.lightboxCloseBtn:hover {
+  opacity: 1;
+}
+
+/* Fade animation engine for premium smooth opening transition states */
+@keyframes fadeInEffect {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* RESPONSIVE LAYOUT RESPONSES */
+@media (max-width: 968px) {
+  .splitLayout {
+    grid-template-columns: 1fr; /* Stack into single column pane layout gracefully */
+    gap: 30px;
+  }
+
+  .codeColumn {
+    position: static; /* Unpin stickiness on compact tablets and devices */
+    max-height: 500px; /* Cap code frame size cleanly on mobile viewports */
+  }
+}

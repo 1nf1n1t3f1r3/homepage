@@ -37,3 +37,9 @@ I was working on the Masque de Fer Website along the Odin Project. I'm not entir
 The setup for these is slightly different, because they don't (all) have a Github Repo to go with them. Most are single scripts, not requiring much to get working, or a separate environment that's a bit outside of the regular wheelhouse. So, instead, I changed the buttons to a single 'Read Me!' button, which'll open up a story in a new SPA Page. If it has a Repo, it's linked there. It has a .MD file and a .PY file which it displays side by side, so the reader can get an idea what I'm talking about. I had considered writing snippets in the text but... It's not worth the effort of turning it into a full blog for each of these.
 
 ## CV
+
+This is probably the most procratinated part of the project. I wasn't entirely sure how to set this up. Eventually I decided to have a small opening blurb and then re-use the cart system as navigation to the main tabs of the website first. Below them is the CV with a different card layout from the rest of the website. The idea is the user can find their way to cool projects faster. Not everybody would be interested in the CV. Didn't wind up looking that bad, I'd say!
+
+### Writing
+
+As for the text.. It feels incredibly 'corpo'. I suppose that's the point, but it's something I'm not very good at (yet).

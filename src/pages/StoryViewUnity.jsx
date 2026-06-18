@@ -1,27 +1,27 @@
-// src/pages/StoryView.jsx
+// src/pages/StoryViewUnity.jsx
 import { useState, useEffect, useLayoutEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import ReactMarkdown from "react-markdown";
-import styles from "./StoryView.module.css";
+import styles from "./StoryViewUnity.module.css";
 
 import Prism from "prismjs";
 import "prismjs/components/prism-python";
 
-const mdModules = import.meta.glob("../content/trading/*.md", {
+const mdModules = import.meta.glob("../content/unity/*.md", {
   query: "?raw",
   eager: true,
 });
-const codeModules = import.meta.glob("../content/trading/*.py", {
+const codeModules = import.meta.glob("../content/unity/*.py", {
   query: "?raw",
   eager: true,
 });
 
-function StoryView() {
+function StoryViewUnity() {
   const { storyId } = useParams();
   const [activeModalImg, setActiveModalImg] = useState(null);
 
-  const mdPath = `../content/trading/${storyId}.md`;
-  const codePath = `../content/trading/${storyId}.py`;
+  const mdPath = `../content/unity/${storyId}.md`;
+  const codePath = `../content/unity/${storyId}.py`;
 
   const markdownContent = mdModules[mdPath]?.default || null;
   const codeContent = codeModules[codePath]?.default || null;
@@ -107,8 +107,8 @@ function StoryView() {
           </section>
         </div>
 
-        <Link to="/trading" className={styles.backBtn}>
-          ← Back to Trading Hub
+        <Link to="/unity" className={styles.backBtn}>
+          ← Back to Unity Hub
         </Link>
       </div>
 
@@ -131,4 +131,4 @@ function StoryView() {
   );
 }
 
-export default StoryView;
+export default StoryViewUnity;

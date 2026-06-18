@@ -9,6 +9,8 @@ import MyWebsites from "./pages/MyWebsites";
 import OdinHub from "./pages/OdinHub";
 import Trading from "./pages/Trading";
 import StoryView from "./pages/StoryView"; // The single template page
+import Unity from "./pages/Unity";
+import StoryViewUnity from "./pages/StoryViewUnity"; // The single template page
 
 // Tiny placeholder components for your pages (you can move these to separate files later!)
 // const Home = () => (
@@ -29,12 +31,12 @@ import StoryView from "./pages/StoryView"; // The single template page
 //     <p>Pine Script and automation write-ups...</p>
 //   </main>
 // );
-const UnityDev = () => (
-  <main className="page-content">
-    <h2>Unity & The Networking Wheel</h2>
-    <p>The story of how I tried to rewrite multiplayer sync from scratch...</p>
-  </main>
-);
+// const UnityDev = () => (
+//   <main className="page-content">
+//     <h2>Unity & The Networking Wheel</h2>
+//     <p>The story of how I tried to rewrite multiplayer sync from scratch...</p>
+//   </main>
+// );
 // const MasqueDeFer = () => (
 //   <main className="page-content">
 //     <h2>Masque de Fer Club Website</h2>
@@ -46,7 +48,7 @@ function App() {
   return (
     <div className="app-container">
       {/* Prevent Scrolling Issues */}
-      {/* <ScrollToTop /> */}
+      <ScrollToTop />
 
       {/* The header stays visible on every single page */}
       <Header />
@@ -57,7 +59,8 @@ function App() {
         <Route path="/odin" element={<OdinHub />} />
         <Route path="/trading" element={<Trading />} />
         <Route path="/trading/:storyId" element={<StoryView />} />
-        <Route path="/unity" element={<UnityDev />} />
+        <Route path="/unity" element={<Unity />} />
+        <Route path="/unity/:storyId" element={<StoryViewUnity />} />
         <Route path="/mywebsites" element={<MyWebsites />} />
       </Routes>
     </div>
