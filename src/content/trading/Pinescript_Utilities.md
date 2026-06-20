@@ -1,6 +1,6 @@
 # Pinescript Utilities
 
-[💻 View 'Minirepo' on GitHub](https://github.com/1nf1n1t3f1r3/Pinescript_Utilities)
+[💻 View Scripts on GitHub](https://github.com/1nf1n1t3f1r3/Pinescript_Utilities)
 
 A collection of Pinescript Utility Scripts
 

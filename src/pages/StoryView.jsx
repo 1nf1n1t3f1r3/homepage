@@ -85,6 +85,9 @@ function StoryView() {
                 {markdownContent}
               </ReactMarkdown>
             </article>
+            <Link to="/trading" className={styles.backBtn}>
+              ← Back to Trading Hub
+            </Link>
           </section>
 
           {/* Right Column: Code Window */}
@@ -106,10 +109,6 @@ function StoryView() {
             )}
           </section>
         </div>
-
-        <Link to="/trading" className={styles.backBtn}>
-          ← Back to Trading Hub
-        </Link>
       </div>
 
       {/* DYNAMIC BACKDROP LIGHTBOX ZOOM OVERLAY */}

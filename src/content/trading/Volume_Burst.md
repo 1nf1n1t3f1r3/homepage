@@ -1,8 +1,8 @@
 # Volume Burst
 
-[💻 View 'Minirepo' Source Code on GitHub](https://github.com/1nf1n1t3f1r3/Volume_Burst_Minirepo)
+[💻 View Scripts on GitHub](https://github.com/1nf1n1t3f1r3/Volume_Burst_Minirepo)
 
-This Minirepo doesn't contain the proper Python environment to run the script on its own, but it shows the Pine and Python scripts side by side.
+This Repo doesn't contain the proper Python environment to run the script on its own, but it shows the Pine and Python scripts side by side.
 
 So, this is a relatively simple idea I had, which turns a little complex when you try turn it into Python. It makes it a good candidate for demonstration, though. When testing out a new idea, it helps to write it in Pinescript. You get immediate feedback when you save the script, and can visually determine if it looks like it makes sense at all. You can spend 15 minutes deciding exactly what parameters to use, until it looks right on one chart, then swap to another chart and realize that you just managed to beautifully overfit on one example.
 

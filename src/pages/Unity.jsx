@@ -13,6 +13,29 @@ const unityProjects = [
       "The reason is pretty straight-forward. Read more about my musings here",
     slug: "Epilogue",
   },
+  {
+    title: "EntityPhysics",
+    subtitle: "Custom Physics Engine",
+    techStack: ["C#", "Unity"],
+    description:
+      " As far as looking back on code goes, I don't think it's that bad. Maybe, if I decide to try my hand on 2D Side-Scrolling again I can re-use it.",
+    slug: "EntityPhysics",
+  },
+  {
+    title: "EntityRaycast",
+    subtitle: "Custom Physics Engine Part 2",
+    techStack: ["C#", "Unity"],
+    description:
+      "Physics are great and all, but they dont' help when you move so fast you clip through the wall. ",
+    slug: "EntityRaycastSystem",
+  },
+  {
+    title: "Inventory",
+    subtitle: "The Inventory management system",
+    techStack: ["C#", "Unity"],
+    description: "Every game needs an Inventory system, right?",
+    slug: "Inventory",
+  },
 ];
 
 function Unity() {

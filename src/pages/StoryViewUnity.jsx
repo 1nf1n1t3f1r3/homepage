@@ -5,13 +5,13 @@ import ReactMarkdown from "react-markdown";
 import styles from "./StoryViewUnity.module.css";
 
 import Prism from "prismjs";
-import "prismjs/components/prism-python";
+import "prismjs/components/prism-csharp";
 
 const mdModules = import.meta.glob("../content/unity/*.md", {
   query: "?raw",
   eager: true,
 });
-const codeModules = import.meta.glob("../content/unity/*.py", {
+const codeModules = import.meta.glob("../content/unity/*.cs", {
   query: "?raw",
   eager: true,
 });
@@ -21,23 +21,22 @@ function StoryViewUnity() {
   const [activeModalImg, setActiveModalImg] = useState(null);
 
   const mdPath = `../content/unity/${storyId}.md`;
-  const codePath = `../content/unity/${storyId}.py`;
+  const codePath = `../content/unity/${storyId}.cs`;
 
   const markdownContent = mdModules[mdPath]?.default || null;
   const codeContent = codeModules[codePath]?.default || null;
 
   useLayoutEffect(() => {
     window.scrollTo(0, 0);
-  }, [storyId]); // Fires instantly the second the storyId changes
+  }, [storyId]);
 
-  // Prism
+  // Prism Highlight Loop
   useEffect(() => {
     if (markdownContent || codeContent) {
       Prism.highlightAll();
     }
   }, [markdownContent, codeContent, storyId]);
 
-  // Intercept the default markdown image and code render loops
   const markdownRenderComponents = {
     img: ({ src, alt }) => (
       <img
@@ -47,69 +46,63 @@ function StoryViewUnity() {
         onClick={() => setActiveModalImg({ src, alt })}
       />
     ),
-    // Ensures any code snippets inside the markdown markdown text column also get tokens applied
     code: ({ className, children }) => {
       const language = className
         ? className.replace("language-", "")
-        : "python";
+        : "python"; // Change default fallback here if needed
       return <code className={`language-${language}`}>{children}</code>;
     },
-
-    // Open Links in new Tabs
-    a: ({ href, children }) => {
-      return (
-        <a href={href} target="_blank" rel="noopener noreferrer">
-          {children}
-        </a>
-      );
-    },
+    a: ({ href, children }) => (
+      <a href={href} target="_blank" rel="noopener noreferrer">
+        {children}
+      </a>
+    ),
   };
 
-  if (!markdownContent || (codeContent && !codeModules[codePath])) {
+  if (!markdownContent) {
     return (
-      <main
-        className={styles.fullBleedCanvas}
-        style={{ minHeight: "100vh" }}
-      ></main>
+      <main className={styles.fullBleedCanvas} style={{ minHeight: "100vh" }} />
     );
   }
+
+  // 🚀 DYNAMIC LAYOUT SELECTOR
+  // If codeContent is available, use splitLayout. Otherwise, switch to centerLayout.
+  const layoutClassName = codeContent
+    ? styles.splitLayout
+    : styles.centerLayout;
 
   return (
     <main className={styles.fullBleedCanvas}>
       <div className={styles.storyContainer}>
-        <div className={styles.splitLayout}>
-          {/* Left Column: Story */}
+        {/* Swaps classes structurally depending on asset file states */}
+        <div className={layoutClassName}>
+          {/* Narrative text column always renders */}
           <section className={styles.narrativeColumn}>
             <article className={styles.readingCard}>
               <ReactMarkdown components={markdownRenderComponents}>
                 {markdownContent}
               </ReactMarkdown>
             </article>
+            <Link to="/unity" className={styles.backBtn}>
+              ← Back to Unity Hub
+            </Link>
           </section>
 
-          {/* Right Column: Code Window */}
-          <section className={styles.codeColumn}>
-            {codeContent ? (
+          {/* ⚡ CONDITIONAL CODE WINDOW: Completely disappears if no file exists */}
+          {codeContent && (
+            <section className={styles.codeColumn}>
               <div className={styles.codeFrame}>
                 <div className={styles.codeFrameHeader}>
-                  <span>{storyId}.py</span>
+                  <span>{storyId}.cs</span>
                 </div>
-                {/* Prism target class "language-python" here */}
+
                 <pre className="language-python">
                   <code className="language-python">{codeContent}</code>
                 </pre>
               </div>
-            ) : (
-              <div className={styles.noCodeBox}>
-                <p>No associated code script file found.</p>
-              </div>
-            )}
-          </section>
+            </section>
+          )}
         </div>
-
-        <Link to="/unity" className={styles.backBtn}>
-          ← Back to Unity Hub
-        </Link>
       </div>
 
       {/* DYNAMIC BACKDROP LIGHTBOX ZOOM OVERLAY */}

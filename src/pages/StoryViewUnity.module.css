@@ -49,6 +49,26 @@
   align-items: start;
 }
 
+/* 🚀 NEW: Smooth single-column centered block for pure text files */
+.centerLayout {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* Adjust your narrative column behavior based on context */
+.centerLayout .narrativeColumn {
+  width: 100%;
+  max-width: 1000px;
+}
+
+/* Optional: Smooth transition tweak for layout snapping */
+.narrativeColumn,
+.codeColumn {
+  transition: all 0.25s ease-in-out;
+}
+
 /* 1. Left Grid Child Wrapper */
 .narrativeColumn {
   min-width: 0; /* Defensive CSS: forces content to wrap inside the 50% boundary */
