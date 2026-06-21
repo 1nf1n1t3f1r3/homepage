@@ -167,6 +167,10 @@ html {
   gap: 30px;
 }
 
+.projectsGrid > :last-child:nth-child(3n + 1) {
+  grid-column: 2;
+}
+
 /* Card Components */
 .projectCard {
   background: var(--card-bg-override, var(--bg-card));

@@ -14,7 +14,7 @@ const unityProjects = [
     slug: "Epilogue",
   },
   {
-    title: "EntityPhysics",
+    title: "Entity Physics",
     subtitle: "Custom Physics Engine",
     techStack: ["C#", "Unity"],
     description:
@@ -22,19 +22,18 @@ const unityProjects = [
     slug: "EntityPhysics",
   },
   {
-    title: "EntityRaycast",
-    subtitle: "Custom Physics Engine Part 2",
-    techStack: ["C#", "Unity"],
-    description:
-      "Physics are great and all, but they dont' help when you move so fast you clip through the wall. ",
-    slug: "EntityRaycastSystem",
+    title: "Inventory System",
+    subtitle: "The Inventory Management system",
+    techStack: ["C#", "Unity", "JSON"],
+    description: "Every game needs an Inventory system.",
+    slug: "Inventory",
   },
   {
-    title: "Inventory",
-    subtitle: "The Inventory management system",
-    techStack: ["C#", "Unity"],
-    description: "Every game needs an Inventory system, right?",
-    slug: "Inventory",
+    title: "Multiplayer Abyss",
+    subtitle: "The Abyss",
+    techStack: ["C#", "Unity", "Mirror"],
+    description: "Get me out. Please.",
+    slug: "Multiplayer",
   },
 ];
 

@@ -20,6 +20,8 @@ The way any entity gets updated is through here. There's three main systems: Int
 
 This includes things like Gravity, so things fall down, and Drag, so nothing slides like it's on ice. It uses the Grounded (an WallSliding) checks to see if we're in the air or not, then uses the targetFallSpeed and the gravity setting to speed up the velocity.y to send us back to Earth. The velocity.x is determined by Drag/Friction. They're essentially the same, but friction is greater than drag, like how sliding across the ground has more resistance than flying through it.
 
+<!-- Gif Here: Gravity -->
+
 ### External Forces
 
 External Forces interact a bit differently. There's three ways it adds Velocity. Either immediately, over time, or it can completely override Velocity (either X or Y, or both!). The logic here is very minimal, but the good part about it is that this only processes the forces. It doesn't care where they come from. In fact, it also includes the Player's inputs from PlayerController (which really wouldn't be classified as something 'External'). The other script will simply add some force to the Entity, and this will process it, no questions asked.
@@ -32,14 +34,22 @@ Another thing that it does is 'snap' to the ground. The idea here is that it's e
 
 As an additional safeguard, there's 'Repel' logic. This basically checks, based on a box around the Entity, if it's in a wall. The way it works is that WouldOverlapAtPosition checks 'Would I be in a wall here?', before moving there. If so, it'll start to look for the 'exit' with BestRepelDirection and move towards it with RepelFromOverlap before finally executing the movement. It works iteratively, repelling until it's done, or its max has been reached.
 
+<!-- Gif Here: Raycast Gizmos -->
+
 ### HandleImpact
 
 This is the 'Cratering Simulator', but also where slopes get a little funky. I figured that landing on a flat surface or on a sloped surface shouldn't have the same effect, so, here, the Raycasts look at the angle of the ground we're landing on. The idea is that, sliding along an even surface wouldn't hurt, or create a dead-stop, but slamming into a wall would. That's very black and white; measuring velocity and impact angles handles everything that's grey. It allows deflecting Velocities across the slope of a surface. One other thing it does is that, when moving horizontally into an upward slope, the Velocity conversion would lead to positive Y (I.E. going up). That makes sense when bouncing off, but without special handling, it means an entity can just 'climb' by moving into a surface. Setting a cooldown on it was a good fix, though one that feels very hacky.
 
+<!-- Gif Here: Bouncy Slope -->
+
 ### The Rest
 
-After all the ground work, this is basically the part that executes. First UpdatePosition, which changes Position based on the Entity's Velocity. There's a call to the RaycastSystem to check if we're Overlapping. If so, we start running the tunnelling prevention logic (again). Finally, we damp small velocities to zero, because there's no point in having Velocity.X = .000000000125, and we run HandleSteepImpactTimer, which handles the cooldown I mentioned in the 'handleImpact' section.
+After all the ground work, this is basically the part that executes. First UpdatePosition, which changes Position based on the Entity's Velocity. There's a call to the RaycastSystem to check for Overlapping. If so, it starts running the tunnelling prevention logic (again). Finally, it damp small velocities to zero, because there's no point in having Velocity.X = .000000000125. Finally, it runs HandleSteepImpactTimer, which handles the cooldown I mentioned in the 'handleImpact' section.
 
 ## Conclusion
 
 Looking back on it, the system feels both hacky and surprisingly complete. There are obvious things I'd refactor today: splitting responsibilities into smaller components, cleaning up commented code, and simplifying some of the state synchronization. At the same time, many of the solutions emerged from solving real edge cases. If I built another 2D platformer tomorrow, I'd probably start by reusing large parts of this controller rather than starting from scratch. In my testing, the floatiness of it reminded me a lot of Risk of Rain 2, a game I like quite a lot. Mostly by accident, of course, but I still take it as a good sign.
+
+<!-- Gif Here. Not being able to walk Diagonals -->
+
+<!-- Gif Here Walking Diagonals -->
