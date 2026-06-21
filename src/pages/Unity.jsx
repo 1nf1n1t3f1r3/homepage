@@ -10,7 +10,7 @@ const unityProjects = [
     subtitle: "Start here",
     techStack: ["C#", "Unity"],
     description:
-      "The reason is pretty straight-forward. Read more about my musings here",
+      "The reason is.. Relatively straight-forward. Read more about my musings here",
     slug: "Epilogue",
   },
   {
@@ -25,14 +25,16 @@ const unityProjects = [
     title: "Inventory System",
     subtitle: "The Inventory Management system",
     techStack: ["C#", "Unity", "JSON"],
-    description: "Every game needs an Inventory system.",
+    description:
+      "Every game needs an Inventory system. This one isn't all that bad, I think",
     slug: "Inventory",
   },
   {
     title: "Multiplayer Abyss",
     subtitle: "The Abyss",
     techStack: ["C#", "Unity", "Mirror"],
-    description: "Get me out. Please.",
+    description:
+      "Overengineerd Multiplayer Swamp. Should've just slapped a NetworkTransform on it.",
     slug: "Multiplayer",
   },
 ];
