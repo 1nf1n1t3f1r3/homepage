@@ -2,7 +2,7 @@
 import React from "react";
 import styles from "./Home.module.css";
 import { Link } from "react-router-dom";
-
+import { Helmet } from "react-helmet-async"; // 1. Import Helmet
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faEarthEurope,
@@ -14,13 +14,19 @@ import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 function Home() {
   return (
     <main className="page-content">
+      <Helmet>
+        <title>Homepage | Janus de Vries</title>
+        <meta name="description" content="Homepage" />
+        <link rel="canonical" href="https://janusdevries.nl/" />
+      </Helmet>
+
       <div className="gridContainer">
         {/* HERO BANNER HEADER */}
         <div className={styles.heroGreetingBlock}>
           <h1>Greetings, Traveller! I'm Janus.</h1>
           <p className={styles.heroSubheading}>
             I'm a full-stack web developer who thrives on breaking down complex
-            problems into (mostly) clean, modular systems.
+            problems into clean, modular systems.
           </p>
           <p className={styles.heroStatusText}>
             Whether I'm engineering algorithmic trading pipelines, designing
@@ -34,7 +40,7 @@ function Home() {
             to read my CV!
           </p>
         </div>
-        <h3 className={styles.sectionTitle}>Explore My Works</h3>
+        <h2 className={styles.sectionTitle}>Explore My Works</h2>
         {/* Portal Section */}
         <section className={styles.portalSection}>
           <div className={styles.projectsGrid}>
@@ -146,7 +152,7 @@ function Home() {
         </section>
 
         {/* 2. TWO-COLUMN SPLIT RESUME GRID */}
-        <h3 className={styles.sectionTitle}>About Me</h3>
+        <h2 className={styles.sectionTitle}>About Me</h2>
         <div className={styles.resumeLayout}>
           {/* LEFT SIDEBAR: Personal Details & Core Tech Stack */}
           <section className={styles.sidebarColumn}>
@@ -203,16 +209,20 @@ function Home() {
                     </strong>
                   </a>
                 </li>
-                {/* <li>
-                  <FontAwesomeIcon
-                    icon={faLinkedin}
-                    className={styles.contactIcon}
-                  />
-                  <a href="https://github.com/1nf1n1t3f1r3/">
+                <li></li>
+                <li>
+                  <a href="https://www.linkedin.com/in/janus-de-vries-29b4a1205/">
                     {" "}
-                    <strong> Visit my LinkedIn</strong>
+                    <strong>
+                      {" "}
+                      <FontAwesomeIcon
+                        icon={faLinkedin}
+                        className={styles.contactIcon}
+                      />
+                      Visit my LinkedIn
+                    </strong>
                   </a>
-                </li> */}
+                </li>
               </ul>
             </div>
 

@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import ReadmeModal from "../components/GitHubReadmeModal";
-
+import { Helmet } from "react-helmet-async"; // 1. Import Helmet
 import styles from "./OdinHub.module.css"; // Bring back the module layout helper
 
 const odinProjects = [
@@ -56,7 +56,15 @@ function OdinHub() {
 
   return (
     <main className={styles.fullBleedCanvas}>
-      {/* 2. This locks your text and cards into your 1200px centered grid */}
+      <Helmet>
+        <title>Odin Projects | Janus de Vries</title>
+        <meta
+          name="description"
+          content="Explore my works for the Odin Project"
+        />
+        <link rel="canonical" href="https://janusdevries.nl/odin" />
+      </Helmet>
+
       <div className="gridContainer">
         <div className={`pageHeaderBanner ${styles.odinHeaderTheme}`}>
           <div>

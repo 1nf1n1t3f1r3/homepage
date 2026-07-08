@@ -1,0 +1,12 @@
+# Janus de Vries - Fullstack Developer Portfolio
+
+> Information and projects by Janus de Vries, full-stack web developer.
+
+This file provides a structured index of the core sections and project case studies available on this portfolio site for LLM inference and agentic discovery.
+
+## Core Pages
+- https://janusdevries.nl/ : Homepage and introduction.
+- https://janusdevries.nl/mywebsites : Web applications and design builds.
+- https://janusdevries.nl/odin : The Odin Project learning projects.
+- https://janusdevries.nl/trading : Case studies and stories on trading utilities.
+- https://janusdevries.nl/unity : Case studies and stories on Unity Projects.

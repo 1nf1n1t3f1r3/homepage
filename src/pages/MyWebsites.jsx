@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import ReadmeModal from "../components/GitHubReadmeModal";
-
+import { Helmet } from "react-helmet-async"; // 1. Import Helmet
 import styles from "./MyWebsites.module.css"; // Bring back the module layout helper
 
 const websiteProjects = [
@@ -48,7 +48,12 @@ function MyWebsites() {
 
   return (
     <main className={styles.fullBleedCanvas}>
-      {/* 2. This locks your text and cards into your 1200px centered grid */}
+      <Helmet>
+        <title>Web Projects | Janus de Vries</title>
+        <meta name="description" content="Explore my Websites" />
+        <link rel="canonical" href="https://janusdevries.nl/mywebsites" />
+      </Helmet>
+
       <div className="gridContainer">
         <div className={`pageHeaderBanner ${styles.odinHeaderTheme}`}>
           <div>

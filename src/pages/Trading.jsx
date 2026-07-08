@@ -1,7 +1,7 @@
 // src/pages/Trading.jsx
 
 import { Link } from "react-router-dom";
-
+import { Helmet } from "react-helmet-async"; // 1. Import Helmet
 import styles from "./Trading.module.css"; // Bring back the module layout helper
 
 const tradingProjects = [
@@ -57,6 +57,14 @@ const tradingProjects = [
 function Trading() {
   return (
     <main className={styles.fullBleedCanvas}>
+      <Helmet>
+        <title>Trading Projects | Janus de Vries</title>
+        <meta
+          name="description"
+          content="Check out some of my Trading Scripts"
+        />
+        <link rel="canonical" href="https://janusdevries.nl/trading" />
+      </Helmet>
       <div className="gridContainer">
         <div className={`pageHeaderBanner ${styles.odinHeaderTheme}`}>
           <div>

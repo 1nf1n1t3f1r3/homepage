@@ -1,7 +1,7 @@
 // src/pages/Unity.jsx
 
 import { Link } from "react-router-dom";
-
+import { Helmet } from "react-helmet-async"; // 1. Import Helmet
 import styles from "./Unity.module.css"; // Bring back the module layout helper
 
 const unityProjects = [
@@ -42,6 +42,15 @@ const unityProjects = [
 function Unity() {
   return (
     <main className={styles.fullBleedCanvas}>
+      <Helmet>
+        <title>Unity Project | Janus de Vries</title>
+        <meta
+          name="description"
+          content="Check out some of my progress in Unity"
+        />
+        <link rel="canonical" href="https://janusdevries.nl/unity" />
+      </Helmet>
+
       <div className="gridContainer">
         <div className={`pageHeaderBanner ${styles.odinHeaderTheme}`}>
           <div>

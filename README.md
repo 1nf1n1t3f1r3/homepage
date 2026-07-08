@@ -34,7 +34,7 @@ I was working on the Masque de Fer Website along the Odin Project. I'm not entir
 
 ## Stories
 
-The setup for these is slightly different, because they don't (all) have a Github Repo to go with them. Most are single scripts, not requiring much to get working, or a separate environment that's a bit outside of the regular wheelhouse. So, instead, I changed the buttons to a single 'Read Me!' button, which'll open up a story in a new SPA Page. If it has a Repo, it's linked there. It has a .MD file and a .PY file which it displays side by side, so the reader can get an idea what I'm talking about. I had considered writing snippets in the text but... It's not worth the effort of turning it into a full blog for each of these.
+The setup for these is slightly different, because they don't (all) have a Github Repo to go with them. Most are single scripts, not requiring much to get working, or a separate environment that's a bit outside of the regular wheelhouse. So, instead, I changed the buttons to a single 'Read Me!' button, which'll open up a story in a new SPA Page. If it has a Repo, it's linked there. It has a .MD file and a .PY/C# file which it displays side by side, so the reader can get an idea what I'm talking about. I had considered writing snippets in the text but... Frankly, it's not worth the effort of turning it into a full blog for each of these.
 
 ## CV
 

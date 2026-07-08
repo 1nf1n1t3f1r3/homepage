@@ -8,41 +8,9 @@ import Home from "./pages/Home";
 import MyWebsites from "./pages/MyWebsites";
 import OdinHub from "./pages/OdinHub";
 import Trading from "./pages/Trading";
-import StoryView from "./pages/StoryView"; // The single template page
+import StoryView from "./pages/StoryView";
 import Unity from "./pages/Unity";
-import StoryViewUnity from "./pages/StoryViewUnity"; // The single template page
-
-// Tiny placeholder components for your pages (you can move these to separate files later!)
-// const Home = () => (
-//   <main className="page-content">
-//     <h2>Resume & About Me</h2>
-//     <p>Welcome to my portfolio...</p>
-//   </main>
-// );
-// const OdinHubLink = () => (
-//   <main className="page-content">
-//     <h2>Odin Projects</h2>
-//     <p>Check out my apps running on their own subdomains...</p>
-//   </main>
-// );
-// const Trading = () => (
-//   <main className="page-content">
-//     <h2>Trading Scripts</h2>
-//     <p>Pine Script and automation write-ups...</p>
-//   </main>
-// );
-// const UnityDev = () => (
-//   <main className="page-content">
-//     <h2>Unity & The Networking Wheel</h2>
-//     <p>The story of how I tried to rewrite multiplayer sync from scratch...</p>
-//   </main>
-// );
-// const MasqueDeFer = () => (
-//   <main className="page-content">
-//     <h2>Masque de Fer Club Website</h2>
-//     <p>The (Dutch) Website of Schermvereniging Masque de Fer, Zwijndrecht</p>
-//   </main>
-// );
+import StoryViewUnity from "./pages/StoryViewUnity";
 
 function App() {
   return (

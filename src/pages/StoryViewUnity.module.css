@@ -11,10 +11,10 @@
       rgba(11, 13, 16, 0.4) 00%,
       var(--bg-app) 90%
     ),
-    url("/images/mdf_image005_upscaled.png") no-repeat;
+    url("/images/unity_screenshot.png") no-repeat;
 
   background-size: cover;
-  background-position: left;
+  background-position: center;
 
   /* 2. Pushes the footer cleanly to the bottom of the screen */
   min-height: 100vh;
