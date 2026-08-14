@@ -1,6 +1,6 @@
 # The Lich of Leilon
 
-Strictly speaking, I lied. This isn't a _Github_ Readme, but a .md file in this project, so I can keep the Github repo private. Sue me!
+Strictly speaking, I lied. This isn't a _Github_ Readme, but a .md file in this project, so I can keep the Github repo private.
 
 ## Obsidian
 

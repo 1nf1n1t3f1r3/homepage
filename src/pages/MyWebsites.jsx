@@ -7,7 +7,7 @@ import styles from "./MyWebsites.module.css"; // Bring back the module layout he
 
 const websiteProjects = [
   {
-    title: "Janus de Vries Personal Website",
+    title: "Personal Website",
     subtitle: "You are Here!",
     techStack: ["React"],
     description:
@@ -16,6 +16,18 @@ const websiteProjects = [
     githubUrl: "https://github.com/1nf1n1t3f1r3/homepage",
     repo: "1nf1n1t3f1r3/homepage",
     image: "",
+  },
+  {
+    title: "Blackrider.Quest",
+    subtitle: "My way out of hand TTRPG-Tools Website",
+    techStack: ["React", "Too much Data"],
+    description:
+      "Website containing helpful tools for D&D, like a Character Builder. The Github Repo for this one is Private, but the Readme is clickable.",
+    liveUrl: "https://blackrider.quest",
+    githubUrl: "https://github.com/1nf1n1t3f1r3/dndtools",
+    repo: "1nf1n1t3f1r3/dndtools",
+    localReadme: "../content/Blackrider_Quest.md",
+    image: "/images/Blackrider_Quest.png",
   },
   {
     title: "Masque de Fer Fencing Club Website",
